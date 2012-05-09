@@ -55,3 +55,6 @@ map <Leader>f :Ack<space>
 map <Leader>n :NERDTreeToggle<CR>
 map <Leader>m :NERDTreeFind<CR>
 
+"" Command-T config
+let g:CommandTMaxHeight=20
+

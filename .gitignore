@@ -1,0 +1,3 @@
+vim/backup/*
+*.swp
+.netrwhist

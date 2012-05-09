@@ -1,0 +1,52 @@
+"" General
+set nocompatible
+set number
+set ruler
+set cursorline
+syntax on
+set encoding=utf-8    		  " set encoding
+set showcmd			            " display incomplete commands
+filetype plugin indent on	  " Load file type plugins + indentation
+let mapleader=","		        " use comma as <Leader> key instead of backslash
+
+"" Whitespace
+set nowrap			            " don't wrap lines
+set tabstop=2 shiftwidth=2	" a tab is two spaces
+set softtabstop=2		
+set expandtab			          " use spaces, not tabs
+set list listchars=tab:\ \ ,trail:·	" set trailing space name
+set backspace=indent,eol,start	" backspace through everything in insert mode
+
+"" Searching
+set hlsearch			          " highlight matches
+set incsearch			          " incremental searching
+set ignorecase			        " searches are case insensitive
+set smartcase			          " ..unless they contatin at least one capital letter
+nnoremap <F3> :set hlsearch!<CR>	" switch highlighting
+
+"" Ack
+let g:ackprg="ack-grep -H --nocolor --nogroup --column --ignore-dir=coverage"
+map <Leader>f :Ack<space>
+
+"" Scrolling
+set scrolloff=3			        " scroll 3 lines before vertical edge
+
+"" Navigation
+nnoremap <c-h> <c-w>h
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-l> <c-w>l
+
+"" Get off my lawn
+nnoremap <Left> :echoe "Use h"<CR>
+nnoremap <Down> :echoe "Use j"<CR>
+nnoremap <Up> :echoe "Use k"<CR>
+nnoremap <Right> :echoe "Use l"<CR>
+
+"" Backup
+set backupdir=~/.vim/backup
+set directory=~/.vim/backup
+
+"" Pathogen setup
+call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()

@@ -24,10 +24,6 @@ set ignorecase			        " searches are case insensitive
 set smartcase			          " ..unless they contatin at least one capital letter
 nnoremap <F3> :set hlsearch!<CR>	" switch highlighting
 
-"" Ack
-let g:ackprg="ack-grep -H --nocolor --nogroup --column --ignore-dir=coverage"
-map <Leader>f :Ack<space>
-
 "" Scrolling
 set scrolloff=3			        " scroll 3 lines before vertical edge
 
@@ -50,3 +46,12 @@ set directory=~/.vim/backup
 "" Pathogen setup
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
+
+"" Ack
+let g:ackprg="ack-grep -H --nocolor --nogroup --column --ignore-dir=coverage"
+map <Leader>f :Ack<space>
+
+"" NERDTree config
+map <Leader>n :NERDTreeToggle<CR>
+map <Leader>m :NERDTreeFind<CR>
+

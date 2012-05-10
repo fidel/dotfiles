@@ -1,0 +1,5 @@
+" No menus, but display icon
+set guioptions=i
+set guifont=Monaco:h12
+set transparency=15
+

@@ -8,6 +8,7 @@ set encoding=utf-8    		  " set encoding
 set showcmd			            " display incomplete commands
 filetype plugin indent on	  " Load file type plugins + indentation
 let mapleader=","		        " use comma as <Leader> key instead of backslash
+colorscheme spacedust
 
 "" Whitespace
 set nowrap			            " don't wrap lines

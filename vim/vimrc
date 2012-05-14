@@ -13,7 +13,7 @@ colorscheme spacedust
 "" Whitespace
 set nowrap			            " don't wrap lines
 set tabstop=2 shiftwidth=2	" a tab is two spaces
-set softtabstop=2		
+set softtabstop=2
 set expandtab			          " use spaces, not tabs
 set list listchars=tab:\ \ ,trail:·	" set trailing space name
 set backspace=indent,eol,start	" backspace through everything in insert mode
@@ -73,4 +73,12 @@ autocmd BufWritePre *.rb,*.py,*.c,*.h,*.feature,*.conf,*rc,README,CHANGELOG,READ
 nnoremap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
 set showmode
+
+"" Bubble signle lines
+nmap <C-Up> [e
+nmap <C-Down> ]e
+
+"" Bubble multiple lines
+vmap <C-Up> [egv
+vmap <C-Down> ]egv
 

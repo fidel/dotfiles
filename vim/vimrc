@@ -1,27 +1,66 @@
-"" Pathogen setup
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
-
 "" General
 set nocompatible
+filetype off
+
+set rtp+=~/.vim/bundle/vundle
+call vundle#rc()
+
+Bundle 'gmarik/vundle'
+Bundle 'kien/ctrlp.vim'
+Bundle 'vim-scripts/ZoomWin'
+Bundle 'mileszs/ack.vim'
+Bundle 'The-NERD-tree'
+Bundle 'The-NERD-Commenter'
+Bundle 'tpope/vim-rails'
+Bundle 'vim-ruby/vim-ruby'
+Bundle 'tsaleh/vim-supertab'
+Bundle 'garbas/vim-snipmate'
+Bundle 'tomtom/tlib_vim'
+Bundle 'MarcWeber/vim-addon-mw-utils.git'
+Bundle 'honza/snipmate-snippets'
+Bundle 'tpope/vim-unimpaired'
+Bundle 'tpope/vim-surround'
+Bundle 'godlygeek/tabular'
+Bundle 'hallison/vim-markdown'
+Bundle 'tpope/vim-fugitive'
+Bundle 'mattn/webapi-vim'
+Bundle 'mattn/gist-vim'
+
+set fileencoding=utf-8    	" set encoding
+filetype plugin indent on	  " Load file type plugins + indentation
+syntax on
+set linebreak
+set history=1000
+set mouse=a
+set ttyfast
+set hidden
+set autoread
+set showcmd			            " display incomplete commands
+let mapleader=","		        " use comma as <Leader> key instead of backslash
+
+"" Visual clues
 set number
 set ruler
 set cursorline
-syntax on
-set encoding=utf-8    		  " set encoding
-set showcmd			            " display incomplete commands
-filetype plugin indent on	  " Load file type plugins + indentation
-let mapleader=","		        " use comma as <Leader> key instead of backslash
-colorscheme twilight256
+set showbreak=↪
+
+"" Colours
+silent! colorscheme twilight256
 let &t_Co=256
 
+"" Undo across sessions
+if has('gui_running')
+   set undodir=~/.vim/backups
+   set undofile
+endif
+
 "" Whitespace
-set nowrap			            " don't wrap lines
-set tabstop=2 shiftwidth=2	" a tab is two spaces
+set nowrap			                    " don't wrap lines
+set tabstop=2 shiftwidth=2	        " a tab is two spaces
 set softtabstop=2
-set expandtab			          " use spaces, not tabs
+set expandtab			                  " use spaces, not tabs
 set list listchars=tab:\ \ ,trail:·	" set trailing space name
-set backspace=indent,eol,start	" backspace through everything in insert mode
+set backspace=indent,eol,start	    " backspace through everything in insert mode
 
 "" Searching
 set hlsearch			          " highlight matches
@@ -31,7 +70,14 @@ set smartcase			          " ..unless they contatin at least one capital letter
 nnoremap <F3> :set hlsearch!<CR>	" switch highlighting
 
 "" Scrolling
-set scrolloff=3			        " scroll 3 lines before vertical edge
+set scrolloff=10
+set sidescrolloff=15
+set sidescroll=1
+
+"" Backups
+set nobackup
+set nowritebackup
+set noswapfile
 
 "" Navigation
 nnoremap <c-h> <c-w>h
@@ -49,6 +95,10 @@ nnoremap <Right> :echoe "Use l"<CR>
 set backupdir=~/.vim/backup
 set directory=~/.vim/backup
 
+"" Zoomwin
+map <Leader>= <C-w>=
+map <Leader><Leader> :ZoomWin<CR>
+
 "" Ack
 let g:ackprg="ack-grep -H --nocolor --nogroup --column --ignore-dir=coverage"
 map <Leader>f :Ack<space>
@@ -57,12 +107,12 @@ map <Leader>f :Ack<space>
 map <Leader>n :NERDTreeToggle<CR>
 map <Leader>m :NERDTreeFind<CR>
 
-"" Command-T config
-let g:CommandTMaxHeight=20
+"" Ctrlp
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 
 "" Tab completion
 set wildmode=list:longest,list:full
-set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,*.zip,*.gz,*.bz,*.tar,*.jpg,*.png,*.png,*.gif,*.avi,*.wmv,*.ogg,*.mp3,*.mov
+set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,*.zip,*.gz,*.bz,*.tar,*.jpg,*.png,*.png,*.gif,*.avi,*.wmv,*.ogg,*.mp3,*.mov,*.so,*.swp,*.zip
 
 "" Capfile, Thorfile, Rakefile, Vagrantfile and Gemfile are Ruby
 au BufRead,BufNewFile {Capfile,Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru,*.rabl}    set ft=ruby

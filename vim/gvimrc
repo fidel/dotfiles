@@ -1,5 +1,5 @@
 " No menus, but display icon
 set guioptions=i
+colorscheme twilight
 set guifont=Monaco:h12
-set transparency=10
-
+set transparency=5

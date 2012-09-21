@@ -1,3 +1,7 @@
+"" Pathogen setup
+call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
+
 "" General
 set nocompatible
 set number
@@ -8,7 +12,8 @@ set encoding=utf-8    		  " set encoding
 set showcmd			            " display incomplete commands
 filetype plugin indent on	  " Load file type plugins + indentation
 let mapleader=","		        " use comma as <Leader> key instead of backslash
-colorscheme spacedust
+colorscheme twilight256
+let &t_Co=256
 
 "" Whitespace
 set nowrap			            " don't wrap lines
@@ -44,10 +49,6 @@ nnoremap <Right> :echoe "Use l"<CR>
 set backupdir=~/.vim/backup
 set directory=~/.vim/backup
 
-"" Pathogen setup
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
-
 "" Ack
 let g:ackprg="ack-grep -H --nocolor --nogroup --column --ignore-dir=coverage"
 map <Leader>f :Ack<space>
@@ -64,7 +65,7 @@ set wildmode=list:longest,list:full
 set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,*.zip,*.gz,*.bz,*.tar,*.jpg,*.png,*.png,*.gif,*.avi,*.wmv,*.ogg,*.mp3,*.mov
 
 "" Capfile, Thorfile, Rakefile, Vagrantfile and Gemfile are Ruby
-au BufRead,BufNewFile {Capfile,Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru}    set ft=ruby
+au BufRead,BufNewFile {Capfile,Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru,*.rabl}    set ft=ruby
 
 "" Trailing whitespace remove on save
 autocmd BufWritePre *.rb,*.py,*.c,*.h,*.feature,*.conf,*rc,README,CHANGELOG,README.* :%s/\s\+$//e
@@ -92,3 +93,7 @@ if exists(":Tabularize")
   vmap <Leader>a: :Tabularize /:\zs<CR>
 endif
 
+"" Gist
+let g:gist_clip_command = 'pbcopy'
+let g:gist_detect_filetype = 1
+let g:gist_show_privates = 1

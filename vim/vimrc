@@ -20,12 +20,22 @@ Bundle 'MarcWeber/vim-addon-mw-utils.git'
 Bundle 'honza/snipmate-snippets'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-endwise'
 Bundle 'godlygeek/tabular'
-Bundle 'hallison/vim-markdown'
+Bundle 'tpope/vim-markdown'
+Bundle 'waylan/vim-markdown-extra-preview'
+Bundle 'nelstrom/vim-markdown-preview'
 Bundle 'tpope/vim-fugitive'
 Bundle 'mattn/webapi-vim'
 Bundle 'mattn/gist-vim'
 Bundle 'Lokaltog/vim-powerline'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'w0ng/vim-hybrid'
+Bundle 'majutsushi/tagbar'
+Bundle 'benmills/vimux'
+Bundle 'skalnik/vim-vroom'
+Bundle 'skalnik/vim-vroom'
+Bundle 'pgr0ss/vimux-ruby-test'
 
 set fileencoding=utf-8    	" set encoding
 filetype plugin indent on	  " Load file type plugins + indentation
@@ -46,7 +56,8 @@ set cursorline
 set showbreak=↪
 
 "" Colours
-silent! colorscheme twilight256
+let g:hybrid_use_Xresources = 1
+silent! colorscheme hybrid
 let &t_Co=256
 
 "" Undo across sessions
@@ -115,8 +126,12 @@ let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 set wildmode=list:longest,list:full
 set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,*.zip,*.gz,*.bz,*.tar,*.jpg,*.png,*.png,*.gif,*.avi,*.wmv,*.ogg,*.mp3,*.mov,*.so,*.swp,*.zip
 
-"" Capfile, Thorfile, Rakefile, Vagrantfile and Gemfile are Ruby
-au BufRead,BufNewFile {Capfile,Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru,*.rabl}    set ft=ruby
+"" Filetypes
+au BufNewFile,BufRead {Capfile,Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru,*.rabl,*.rake}  set syntax=ruby
+au BufNewFile,BufRead *.json                set syntax=javascript
+au BufNewFile,BufRead *.md,*.mkd,*.markdown set syntax=markdown
+
+let g:VMEPstylesheet = 'github2.css'
 
 "" Trailing whitespace remove on save
 autocmd BufWritePre *.rb,*.py,*.c,*.h,*.feature,*.conf,*rc,README,CHANGELOG,README.* :%s/\s\+$//e
@@ -151,3 +166,14 @@ let g:gist_show_privates = 1
 
 "" Powerline
 let g:Powerline_symbols = 'fancy'
+set laststatus=2
+
+"" Tagbar
+nmap <Leader>tb :TagbarToggle<CR>
+
+function! PrettifyXML()
+  set ft=xml
+  :%s/></>\r</g
+  :0
+  :norm =G
+endfunction

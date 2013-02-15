@@ -36,6 +36,7 @@ Bundle 'benmills/vimux'
 Bundle 'skalnik/vim-vroom'
 Bundle 'skalnik/vim-vroom'
 Bundle 'pgr0ss/vimux-ruby-test'
+Bundle 'altercation/vim-colors-solarized'
 
 set fileencoding=utf-8    	" set encoding
 filetype plugin indent on	  " Load file type plugins + indentation

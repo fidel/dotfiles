@@ -26,6 +26,7 @@ Bundle 'tpope/vim-endwise'
 Bundle 'godlygeek/tabular'
 Bundle 'ervandew/vim-supertab'
 Bundle 'majutsushi/tagbar'
+Bundle 'terryma/vim-multiple-cursors'
 
 "" Ruby & Rails stuff
 Bundle 'vim-ruby/vim-ruby'

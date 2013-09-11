@@ -1,46 +1,68 @@
 "" General
 set nocompatible
-filetype off
 
 set rtp+=~/.vim/bundle/vundle
 call vundle#rc()
 
 Bundle 'gmarik/vundle'
+
+"" Interface
 Bundle 'kien/ctrlp.vim'
 Bundle 'vim-scripts/ZoomWin'
-Bundle 'mileszs/ack.vim'
 Bundle 'The-NERD-tree'
+Bundle 'Lokaltog/vim-powerline'
+Bundle 'benmills/vimux'
+Bundle 'tpope/vim-dispatch'
+Bundle 'skalnik/vim-vroom'
+
+"" Search
+Bundle 'rking/ag.vim'
+
+"" Code edit
 Bundle 'The-NERD-Commenter'
-Bundle 'tpope/vim-rails'
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'tsaleh/vim-supertab'
-Bundle 'garbas/vim-snipmate'
-Bundle 'tomtom/tlib_vim'
-Bundle 'MarcWeber/vim-addon-mw-utils.git'
-Bundle 'honza/snipmate-snippets'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-endwise'
 Bundle 'godlygeek/tabular'
+Bundle 'ervandew/vim-supertab'
+Bundle 'majutsushi/tagbar'
+
+"" Ruby & Rails stuff
+Bundle 'vim-ruby/vim-ruby'
+Bundle 'pgr0ss/vimux-ruby-test'
+Bundle 'ecomba/vim-ruby-refactoring'
+Bundle 'tpope/vim-rails'
+Bundle 'tpope/vim-bundler'
+Bundle 'tpope/vim-rake'
+
+"" Code snippets
+Bundle 'tomtom/tlib_vim'
+Bundle 'MarcWeber/vim-addon-mw-utils'
+Bundle 'garbas/vim-snipmate'
+Bundle 'honza/vim-snippets'
+Bundle 'aperezdc/vim-template'
+
+"" Markdown
 Bundle 'tpope/vim-markdown'
 Bundle 'waylan/vim-markdown-extra-preview'
-Bundle 'nelstrom/vim-markdown-preview'
+
+"" Git & Github
 Bundle 'tpope/vim-fugitive'
 Bundle 'mattn/webapi-vim'
 Bundle 'mattn/gist-vim'
-Bundle 'Lokaltog/vim-powerline'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'w0ng/vim-hybrid'
-Bundle 'majutsushi/tagbar'
-Bundle 'benmills/vimux'
-Bundle 'skalnik/vim-vroom'
-Bundle 'skalnik/vim-vroom'
-Bundle 'pgr0ss/vimux-ruby-test'
-Bundle 'altercation/vim-colors-solarized'
 
-set fileencoding=utf-8    	" set encoding
-filetype plugin indent on	  " Load file type plugins + indentation
+"" Coffee, slim, etc.
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'slim-template/vim-slim'
+
+"" Colorschemes
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'chriskempson/tomorrow-theme'
+Bundle 'w0ng/vim-hybrid'
+
 syntax on
+filetype plugin indent on	  " Load file type plugins + indentation
+set fileencoding=utf-8    	" set encoding
 set linebreak
 set history=1000
 set mouse=a
@@ -57,9 +79,11 @@ set cursorline
 set showbreak=↪
 
 "" Colours
-let g:hybrid_use_Xresources = 1
-silent! colorscheme hybrid
+"let g:hybrid_use_Xresources = 1
+"silent! colorscheme hybrid
 let &t_Co=256
+silent! colorscheme Tomorrow-Night-Eighties
+set background=dark
 
 "" Undo across sessions
 if has('gui_running')
@@ -112,9 +136,8 @@ set directory=~/.vim/backup
 map <Leader>= <C-w>=
 map <Leader><Leader> :ZoomWin<CR>
 
-"" Ack
-let g:ackprg="ack-grep -H --nocolor --nogroup --column --ignore-dir=coverage"
-map <Leader>f :Ack<space>
+"" Ag
+map <Leader>f :Ag<space>
 
 "" NERDTree config
 map <Leader>n :NERDTreeToggle<CR>
@@ -133,6 +156,11 @@ au BufNewFile,BufRead *.json                set syntax=javascript
 au BufNewFile,BufRead *.md,*.mkd,*.markdown set syntax=markdown
 
 let g:VMEPstylesheet = 'github2.css'
+
+"" SnipMate
+let g:snipMate = {}
+let g:snipMate.scope_aliases = {}
+let g:snipMate.scope_aliases['ruby'] = 'ruby,ruby-rails,ruby-1.9'
 
 "" Trailing whitespace remove on save
 autocmd BufWritePre *.rb,*.py,*.c,*.h,*.feature,*.conf,*rc,README,CHANGELOG,README.* :%s/\s\+$//e
@@ -172,6 +200,10 @@ set laststatus=2
 "" Tagbar
 nmap <Leader>tb :TagbarToggle<CR>
 
+"" Vim templates
+let g:templates_no_autocmd = 1
+
+"" XML prettify
 function! PrettifyXML()
   set ft=xml
   :%s/></>\r</g

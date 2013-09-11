@@ -1,5 +1,5 @@
 " No menus, but display icon
 set guioptions=i
-colorscheme hybrid
+colorscheme Tomorrow-Night-Eighties
 set guifont=Monaco\ for\ Powerline:h12
 set transparency=5

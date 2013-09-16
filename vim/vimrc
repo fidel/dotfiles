@@ -74,10 +74,13 @@ set showcmd			            " display incomplete commands
 let mapleader=","		        " use comma as <Leader> key instead of backslash
 
 "" Visual clues
-set number
 set ruler
 set cursorline
 set showbreak=↪
+:au FocusLost * :set number
+:au FocusGained * :set relativenumber
+autocmd InsertEnter * :set number
+autocmd InsertLeave * :set relativenumber
 
 "" Colours
 "let g:hybrid_use_Xresources = 1

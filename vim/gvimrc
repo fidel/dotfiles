@@ -1,5 +1,6 @@
 " No menus, but display icon
 set guioptions=i
-colorscheme Tomorrow-Night-Eighties
+colorscheme codeschool
+"colorscheme Tomorrow-Night-Eighties
 set guifont=Monaco\ for\ Powerline:h12
 set transparency=5

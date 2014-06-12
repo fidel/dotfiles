@@ -1,6 +1,5 @@
 "" General
 set nocompatible
-
 set rtp+=~/.vim/bundle/vundle
 call vundle#rc()
 
@@ -8,10 +7,10 @@ Bundle 'gmarik/vundle'
 
 "" Interface
 Bundle 'kien/ctrlp.vim'
+Bundle 'FelikZ/ctrlp-py-matcher'
 Bundle 'vim-scripts/ZoomWin'
 Bundle 'The-NERD-tree'
 Bundle 'Lokaltog/vim-powerline'
-Bundle 'benmills/vimux'
 Bundle 'tpope/vim-dispatch'
 Bundle 'skalnik/vim-vroom'
 
@@ -26,7 +25,6 @@ Bundle 'tpope/vim-endwise'
 Bundle 'godlygeek/tabular'
 Bundle 'ervandew/vim-supertab'
 Bundle 'majutsushi/tagbar'
-Bundle 'terryma/vim-multiple-cursors'
 
 "" Ruby & Rails stuff
 Bundle 'vim-ruby/vim-ruby'
@@ -60,34 +58,32 @@ Bundle 'slim-template/vim-slim'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'chriskempson/tomorrow-theme'
 Bundle 'w0ng/vim-hybrid'
+Bundle '29decibel/codeschool-vim-theme'
+Bundle 'flazz/vim-colorschemes'
 
 syntax on
-filetype plugin indent on	  " Load file type plugins + indentation
-set fileencoding=utf-8    	" set encoding
+filetype plugin indent on " Load file type plugins + indentation
+set fileencoding=utf-8    " set encoding
 set linebreak
 set history=1000
 set mouse=a
 set ttyfast
 set hidden
 set autoread
-set showcmd			            " display incomplete commands
-let mapleader=","		        " use comma as <Leader> key instead of backslash
+set showcmd               " display incomplete commands
+let mapleader=","         " use comma as <Leader> key instead of backslash
 
 "" Visual clues
 set ruler
 set cursorline
 set showbreak=↪
-:au FocusLost * :set number
-:au FocusGained * :set relativenumber
-autocmd InsertEnter * :set number
-autocmd InsertLeave * :set relativenumber
+set number
 
 "" Colours
+let t_Co=256
+let g:hybrid_use_iTerm_colors = 1
 "let g:hybrid_use_Xresources = 1
-"silent! colorscheme hybrid
-let &t_Co=256
-silent! colorscheme Tomorrow-Night-Eighties
-set background=dark
+silent! colorscheme hybrid
 
 "" Undo across sessions
 if has('gui_running')
@@ -121,10 +117,10 @@ set nowritebackup
 set noswapfile
 
 "" Navigation
-nnoremap <c-h> <c-w>h
-nnoremap <c-j> <c-w>j
-nnoremap <c-k> <c-w>k
-nnoremap <c-l> <c-w>l
+"nnoremap <c-h> <c-w>h
+"nnoremap <c-j> <c-w>j
+"nnoremap <c-k> <c-w>k
+"nnoremap <c-l> <c-w>l
 
 "" Get off my lawn
 nnoremap <Left> :echoe "Use h"<CR>
@@ -142,6 +138,7 @@ map <Leader><Leader> :ZoomWin<CR>
 
 "" Ag
 map <Leader>f :Ag<space>
+nnoremap K :Ag "\b<C-R><C-W>\b"<CR>:cw<CR>
 
 "" NERDTree config
 map <Leader>n :NERDTreeToggle<CR>
@@ -149,6 +146,10 @@ map <Leader>m :NERDTreeFind<CR>
 
 "" Ctrlp
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+let g:ctrlp_lazy_update = 350
+
+
 
 "" Tab completion
 set wildmode=list:longest,list:full
@@ -167,7 +168,7 @@ let g:snipMate.scope_aliases = {}
 let g:snipMate.scope_aliases['ruby'] = 'ruby,ruby-rails,ruby-1.9'
 
 "" Trailing whitespace remove on save
-autocmd BufWritePre *.rb,*.py,*.c,*.h,*.feature,*.conf,*rc,README,CHANGELOG,README.* :%s/\s\+$//e
+autocmd BufWritePre *.coffee,*.js,*.rb,*.py,*.c,*.h,*.feature,*.conf,*rc,README,CHANGELOG,README.* :%s/\s\+$//e
 
 "" Toggle pasting
 nnoremap <F2> :set invpaste paste?<CR>
@@ -183,14 +184,14 @@ vmap <C-Up> [egv
 vmap <C-Down> ]egv
 
 "" Tabular
-if exists(":Tabularize")
-  nmap <Leader>a= :Tabularize /=<CR>
-  vmap <Leader>a= :Tabularize /=<CR>
-  nmap <Leader>a> :Tabularize /=><CR>
-  vmap <Leader>a> :Tabularize /=><CR>
-  nmap <Leader>a: :Tabularize /:\zs<CR>
-  vmap <Leader>a: :Tabularize /:\zs<CR>
-endif
+nmap <Leader>a= :Tabularize /=<CR>
+vmap <Leader>a= :Tabularize /=<CR>
+nmap <Leader>a> :Tabularize /=><CR>
+vmap <Leader>a> :Tabularize /=><CR>
+vmap <Leader>a{ :Tabularize /:<CR>
+vmap <Leader>a{ :Tabularize /:<CR>
+nmap <Leader>a: :Tabularize /:\zs<CR>
+nmap <Leader>a: :Tabularize /:\zs<CR>
 
 "" Gist
 let g:gist_clip_command = 'pbcopy'

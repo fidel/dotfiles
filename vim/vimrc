@@ -1,65 +1,67 @@
 "" General
 set nocompatible
-set rtp+=~/.vim/bundle/vundle
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/Vundle.vim'
 
 "" Interface
-Bundle 'kien/ctrlp.vim'
-Bundle 'FelikZ/ctrlp-py-matcher'
-Bundle 'vim-scripts/ZoomWin'
-Bundle 'The-NERD-tree'
-Bundle 'Lokaltog/vim-powerline'
-Bundle 'tpope/vim-dispatch'
-Bundle 'skalnik/vim-vroom'
+Plugin 'kien/ctrlp.vim'
+Plugin 'FelikZ/ctrlp-py-matcher'
+Plugin 'vim-scripts/ZoomWin'
+Plugin 'The-NERD-tree'
+Plugin 'Lokaltog/vim-powerline'
+Plugin 'tpope/vim-dispatch'
+Plugin 'skalnik/vim-vroom'
 
 "" Search
-Bundle 'rking/ag.vim'
+Plugin 'rking/ag.vim'
 
 "" Code edit
-Bundle 'The-NERD-Commenter'
-Bundle 'tpope/vim-unimpaired'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-endwise'
-Bundle 'godlygeek/tabular'
-Bundle 'ervandew/vim-supertab'
-Bundle 'majutsushi/tagbar'
+Plugin 'The-NERD-Commenter'
+Plugin 'tpope/vim-unimpaired'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-endwise'
+Plugin 'godlygeek/tabular'
+Plugin 'ervandew/vim-supertab'
+Plugin 'majutsushi/tagbar'
 
 "" Ruby & Rails stuff
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'pgr0ss/vimux-ruby-test'
-Bundle 'ecomba/vim-ruby-refactoring'
-Bundle 'tpope/vim-rails'
-Bundle 'tpope/vim-bundler'
-Bundle 'tpope/vim-rake'
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'pgr0ss/vimux-ruby-test'
+Plugin 'ecomba/vim-ruby-refactoring'
+Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-bundler'
+Plugin 'tpope/vim-rake'
 
 "" Code snippets
-Bundle 'tomtom/tlib_vim'
-Bundle 'MarcWeber/vim-addon-mw-utils'
-Bundle 'garbas/vim-snipmate'
-Bundle 'honza/vim-snippets'
-Bundle 'aperezdc/vim-template'
+Plugin 'tomtom/tlib_vim'
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'garbas/vim-snipmate'
+Plugin 'honza/vim-snippets'
+Plugin 'aperezdc/vim-template'
 
 "" Markdown
-Bundle 'tpope/vim-markdown'
-Bundle 'waylan/vim-markdown-extra-preview'
+Plugin 'tpope/vim-markdown'
+Plugin 'waylan/vim-markdown-extra-preview'
 
 "" Git & Github
-Bundle 'tpope/vim-fugitive'
-Bundle 'mattn/webapi-vim'
-Bundle 'mattn/gist-vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'mattn/webapi-vim'
+Plugin 'mattn/gist-vim'
 
 "" Coffee, slim, etc.
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'slim-template/vim-slim'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'slim-template/vim-slim'
 
 "" Colorschemes
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'chriskempson/tomorrow-theme'
-Bundle 'w0ng/vim-hybrid'
-Bundle '29decibel/codeschool-vim-theme'
-Bundle 'flazz/vim-colorschemes'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'chriskempson/tomorrow-theme'
+Plugin 'w0ng/vim-hybrid'
+Plugin '29decibel/codeschool-vim-theme'
+Plugin 'flazz/vim-colorschemes'
+
+call vundle#end()
 
 syntax on
 filetype plugin indent on " Load file type plugins + indentation

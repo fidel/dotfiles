@@ -16,6 +16,7 @@ Plugin 'skalnik/vim-vroom'
 
 "" Search
 Plugin 'rking/ag.vim'
+Plugin 'skwp/greplace.vim'
 
 "" Code edit
 Plugin 'The-NERD-Commenter'
@@ -23,8 +24,9 @@ Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-endwise'
 Plugin 'godlygeek/tabular'
-Plugin 'ervandew/vim-supertab'
+Plugin 'Valloric/YouCompleteMe'
 Plugin 'majutsushi/tagbar'
+Plugin 'scrooloose/syntastic'
 
 "" Ruby & Rails stuff
 Plugin 'vim-ruby/vim-ruby'
@@ -60,6 +62,7 @@ Plugin 'chriskempson/tomorrow-theme'
 Plugin 'w0ng/vim-hybrid'
 Plugin '29decibel/codeschool-vim-theme'
 Plugin 'flazz/vim-colorschemes'
+Plugin 'raphamorim/lucario'
 
 call vundle#end()
 
@@ -80,12 +83,14 @@ set ruler
 set cursorline
 set showbreak=↪
 set number
+set colorcolumn=120
 
 "" Colours
 let t_Co=256
 let g:hybrid_use_iTerm_colors = 1
-"let g:hybrid_use_Xresources = 1
+let g:hybrid_use_Xresources = 1
 silent! colorscheme hybrid
+"silent! colorscheme lucario
 
 "" Undo across sessions
 if has('gui_running')
@@ -107,6 +112,8 @@ set incsearch			          " incremental searching
 set ignorecase			        " searches are case insensitive
 set smartcase			          " ..unless they contatin at least one capital letter
 nnoremap <F3> :set hlsearch!<CR>	" switch highlighting
+set grepprg=ag
+let g:grep_cmd_opts = '--line-numbers --noheading'
 
 "" Scrolling
 set scrolloff=10
@@ -146,12 +153,12 @@ nnoremap K :Ag "\b<C-R><C-W>\b"<CR>:cw<CR>
 map <Leader>n :NERDTreeToggle<CR>
 map <Leader>m :NERDTreeFind<CR>
 
-"" Ctrlp
+"" CtrlP
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 let g:ctrlp_lazy_update = 350
-
-
+let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:30,results:10'
+nnoremap <leader>. :CtrlPTag<cr>
 
 "" Tab completion
 set wildmode=list:longest,list:full
@@ -170,7 +177,7 @@ let g:snipMate.scope_aliases = {}
 let g:snipMate.scope_aliases['ruby'] = 'ruby,ruby-rails,ruby-1.9'
 
 "" Trailing whitespace remove on save
-autocmd BufWritePre *.coffee,*.js,*.rb,*.py,*.c,*.h,*.feature,*.conf,*rc,README,CHANGELOG,README.* :%s/\s\+$//e
+autocmd BufWritePre *.coffee,*.js,*.haml,*.erb,*.rb,*.py,*.c,*.h,*.feature,*.conf,*rc,*.md,README,CHANGELOG,README.* :%s/\s\+$//e
 
 "" Toggle pasting
 nnoremap <F2> :set invpaste paste?<CR>
@@ -217,3 +224,4 @@ function! PrettifyXML()
   :0
   :norm =G
 endfunction
+

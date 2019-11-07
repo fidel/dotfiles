@@ -1,245 +1,98 @@
-"" Perf issues on Ruby
-set lazyredraw
-set regexpengine=1
+set rtp+=/usr/local/opt/fzf
+call plug#begin('~/.vim/plugged')
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-Dispatch'
+Plug 'junegunn/fzf.vim'
+Plug 'rking/ag.vim'
+Plug 'Shougo/neocomplete.vim'
+Plug 'regedarek/ZoomWin'
+Plug 'mattn/gist-vim'
+Plug 'mattn/webapi-vim'
+Plug 'bling/vim-airline'
+Plug 'tpope/vim-surround'
+Plug 'vim-ruby/vim-ruby'
+Plug 'godlygeek/tabular'
+Plug 'janko-m/vim-test'
+Plug 'neomake/neomake'
+" Plug 'eslint/eslint'
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue'] }
+Plug 'scrooloose/nerdcommenter'
+Plug 'mxw/vim-jsx'
+Plug 'skwp/greplace.vim'
+Plug 'evidanary/grepg.vim'
+Plug 'Shougo/unite.vim'
+Plug 'Shougo/vimfiler.vim'
+Plug 'sbdchd/neoformat'
+Plug 'christoomey/vim-tmux-runner'
+Plug 'ElmCast/elm-vim'
+Plug 'tmux-plugins/vim-tmux-focus-events'
+" Plug 'lifepillar/vim-wwdc16-theme'
+" Plug 'NLKNguyen/papercolor-theme'
+" Plug 'morhetz/gruvbox'
+Plug 'dracula/vim', { 'as': 'dracula' }
+call plug#end()
 
-"" General
-set nocompatible
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-Plugin 'gmarik/Vundle.vim'
-
-"" Interface
-Plugin 'kien/ctrlp.vim'
-Plugin 'FelikZ/ctrlp-py-matcher'
-Plugin 'regedarek/ZoomWin'
-Plugin 'bling/vim-airline'
-Plugin 'tpope/vim-dispatch'
-Plugin 'skalnik/vim-vroom'
-Plugin 'tpope/vim-vinegar'
-Plugin 'tpope/vim-eunuch'
-
-"" Search
-Plugin 'rking/ag.vim'
-Plugin 'skwp/greplace.vim'
-Plugin 'craigemery/vim-autotag'
-
-"" Code edit
-Plugin 'The-NERD-Commenter'
-Plugin 'tpope/vim-unimpaired'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-endwise'
-Plugin 'godlygeek/tabular'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'majutsushi/tagbar'
-"Plugin 'scrooloose/syntastic'
-
-"" Ruby & Rails stuff
-Plugin 'vim-ruby/vim-ruby'
-Plugin 'ecomba/vim-ruby-refactoring'
-Plugin 'tpope/vim-rails'
-Plugin 'tpope/vim-bundler'
-Plugin 'tpope/vim-rake'
-Plugin 'henrik/vim-yaml-flattener'
-Plugin 'thoughtbot/vim-rspec'
-
-"" Python
-Plugin 'jmcantrell/vim-virtualenv'
-
-"" Code snippets
-Plugin 'tomtom/tlib_vim'
-Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
-
-"" Markdown
-Plugin 'tpope/vim-markdown'
-Plugin 'suan/vim-instant-markdown'
-Plugin 'junegunn/goyo.vim'
-Plugin 'amix/vim-zenroom2'
-
-"" Git & Github
-Plugin 'tpope/vim-fugitive'
-Plugin 'mattn/webapi-vim'
-Plugin 'mattn/gist-vim'
-
-"" JavaScript
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'pangloss/vim-javascript'
-Plugin 'mxw/vim-jsx'
-Plugin 'isRuslan/vim-es6'
-
-"" CSS
-Plugin 'cakebaker/scss-syntax.vim'
-
-"" Nix
-Plugin 'LnL7/vim-nix'
-
-"" Colorschemes
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'chriskempson/base16-vim'
-Plugin 'reedes/vim-colors-pencil'
-Plugin 'noahfrederick/vim-hemisu'
-Plugin 'NLKNguyen/papercolor-theme'
-
-call vundle#end()
 
 syntax on
-filetype plugin indent on " Load file type plugins + indentation
-set fileencoding=utf-8    " set encoding
-set linebreak
-set history=1000
-set mouse=a
-set ttyfast
-set hidden
-set autoread
-set showcmd               " display incomplete commands
-let mapleader=","         " use comma as <Leader> key instead of backslash
-
-"" Visual clues
+color dracula
+set number
+set expandtab
+set shiftwidth=2
+set softtabstop=2
+set shortmess+=I
 set ruler
 set cursorline
 set showbreak=↪
-set number
 set colorcolumn=120
 set wrap
-
-"" Colours
-set background=dark
-
-" Solarized
-"set t_Co=256
-"let g:solarized_termtrans=1
-"let g:solarized_termcolors=256
-"colorscheme solarized
-
-" Pencil
-"colorscheme pencil
-"let g:pencil_neutral_code_bg = 1
-"let g:pencil_spell_undercurl = 1
-"let g:pencil_terminal_italics = 1
-"let g:pencil_higher_contrast_ui = 1
-
-" Base16
-"let base16colorspace=256
-"colorscheme base16-defaul
-
-" Hemisu
-"colorscheme hemisu
-
-" PaperColor
-set t_Co=256
-colorscheme PaperColor
-
-"" Undo across sessions
-if has('gui_running')
-   set undodir=~/.vim/backups
-   set undofile
-endif
-
-"" Whitespace
-set nowrap			                    " don't wrap lines
-set tabstop=2 shiftwidth=2	        " a tab is two spaces
-set softtabstop=2
-set expandtab			                  " use spaces, not tabs
-set list listchars=tab:\ \ ,trail:·	" set trailing space name
-set backspace=indent,eol,start	    " backspace through everything in insert mode
-
-"" Searching
-set hlsearch			          " highlight matches
-set incsearch			          " incremental searching
-set ignorecase			        " searches are case insensitive
-set smartcase			          " ..unless they contatin at least one capital letter
-nnoremap <F3> :set hlsearch!<CR>	" switch highlighting
-set grepprg=ag
-let g:grep_cmd_opts = '--line-numbers --noheading'
-
-"" Scrolling
-set scrolloff=10
-set sidescrolloff=15
-set sidescroll=1
-
-"" Backups
-set nobackup
-set nowritebackup
 set noswapfile
 
-"" Get off my lawn
-"nnoremap <Left> :echoe "Use h"<CR>
-"nnoremap <Down> :echoe "Use j"<CR>
-"nnoremap <Up> :echoe "Use k"<CR>
-"nnoremap <Right> :echoe "Use l"<CR>
+set shell=bash
+set shellcmdflag=-c
+set backupdir=~/.vim/backup//
+set directory=~/.vim/swap//
+set undodir=~/.vim/undo//
 
-"" Backup
-set backupdir=~/.vim/backup
-set directory=~/.vim/backup
 
-"" Zoomwin
-map <Leader>= <C-w>=
+let test#strategy = "dispatch"
+map <Leader>v :VtrOpenRunner { 'orientation': 'h', 'percentage': 40 }<CR>
+" map <Leader>. :TestLast<CR>
+
+nmap <silent> <leader>t :TestNearest<CR>
+nmap <silent> <leader>T :TestFile<CR>
+nmap <silent> <leader>a :TestSuite<CR>
+nmap <silent> <leader>l :TestLast<CR>
+nmap <silent> <leader>g :TestVisit<CR>
+
+
+let mapleader=','
+let g:gist_detect_filetype = 1
+let g:gist_open_browser_after_post = 1
+let g:airline_powerline_fonts = 1
+let g:airline_left_sep = ''
+let g:airline_right_sep = ''
+let g:deoplete#enable_at_startup = 1
+let g:NERDSpaceDelims = 1
+let g:NERDCompactSexyComs = 1
+let g:NERDDefaultAlign = 'left'
+let g:jsx_ext_required = 0
+
+let test#javascript#mocha#executable = "webpack/node_modules/.bin/mocha"
+let test#javascript#mocha#options = "--compilers js:babel/register -r webpack/test/helpers.js"
+
 map <Leader><Leader> :ZoomWin<CR>
+map <Leader>= <C-w>=
 
-"" Ag
-map <Leader>f :Ag<space>
-nnoremap K :Ag "\b<C-R><C-W>\b"<CR>:cw<CR>
+map <C-p> :Files<CR>
+map <C-t> :Files<CR>
 
-"" CtrlP
-let g:ctrlp_custom_ignore = {
-  \ 'dir': '\v[\/]((public\/(images|assets|barcodes|components|experimental|pdflists|pdfs|public_images|swfs|system|videos))|\.(git|hg|svn))$',
-  \ 'file': '\.log',
-  \ }
-let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
-"let g:ctrlp_lazy_update = 350
-let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:30,results:100'
-
-nnoremap <leader>. :CtrlPTag<cr>
-
-" The Silver Searcher
-if executable('ag')
-  " Use ag over grep
-  set grepprg=ag\ --nogroup\ --nocolor
-
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-
-  " ag is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 0
-endif
-
-"" Tab completion
-set wildmode=list:longest,list:full
-set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,*.zip,*.gz,*.bz,*.tar,*.jpg,*.png,*.png,*.gif,*.avi,*.wmv,*.ogg,*.mp3,*.mov,*.so,*.swp,*.zip
-
-"" Filetypes
-au BufNewFile,BufRead {Capfile,Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru,*.rabl,*.rake} set syntax=ruby
-au BufNewFile,BufRead *.json                set syntax=javascript
-au BufNewFile,BufRead *.es6                 set syntax=javascript
-au BufNewFile,BufRead *.md,*.mkd,*.markdown set syntax=markdown
-au BufRead,BufNewFile *.scss                set filetype=scss.css
-au BufRead,BufNewFile *.py                  set tabstop=8 expandtab shiftwidth=4 softtabstop=4
-
-let g:VMEPstylesheet = 'github2.css'
-
-"" UltiSnip
-let g:UltiSnipsExpandTrigger="<c-j>"
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:UltiSnipsJumpBackwardTrigger="<c-k>"
-let g:UltiSnipsListSnippets="<c-h>"
-
-"" Trailing whitespace remove on save
-autocmd BufWritePre *.coffee,*.js,*.haml,*.erb,*.rb,*.py,*.c,*.h,*.feature,*.conf,*rc,*.md,README,CHANGELOG,README.* :%s/\s\+$//e
-
-"" Toggle pasting
-nnoremap <F2> :set invpaste paste?<CR>
-set pastetoggle=<F2>
-set showmode
-
-"" Bubble signle lines
-nmap <C-Up> [e
-nmap <C-Down> ]e
-
-"" Bubble multiple lines
-vmap <C-Up> [egv
-vmap <C-Down> ]egv
+au BufWritePre * :%s/\s\+$//e
+" autocmd BufWritePre *.js exe "normal! gggqG\<C-o>\<C-o>"
+autocmd BufWritePre *.js Neoformat
 
 "" Tabular
 nmap <Leader>a= :Tabularize /=<CR>
@@ -250,100 +103,84 @@ nmap <Leader>a{ :Tabularize /:<CR>
 vmap <Leader>a{ :Tabularize /:<CR>
 nmap <Leader>a: :Tabularize /:\zs<CR>
 vmap <Leader>a: :Tabularize /:\zs<CR>
+"
+"" Perf issues on Ruby
+set lazyredraw
+set regexpengine=1
 
-"" Gist
-let g:gist_clip_command = 'pbcopy'
-let g:gist_detect_filetype = 1
-let g:gist_show_privates = 1
+"Note: This option must be set in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
+" Disable AutoComplPop.
+let g:acp_enableAtStartup = 0
+" Use neocomplete.
+let g:neocomplete#enable_at_startup = 1
+" Use smartcase.
+let g:neocomplete#enable_smart_case = 1
+" Set minimum syntax keyword length.
+let g:neocomplete#sources#syntax#min_keyword_length = 3
 
-"" Airline
-let g:airline_powerline_fonts = 1
-set laststatus=2
+" Define dictionary.
+let g:neocomplete#sources#dictionary#dictionaries = {
+    \ 'default' : '',
+    \ 'vimshell' : $HOME.'/.vimshell_hist',
+    \ 'scheme' : $HOME.'/.gosh_completions'
+        \ }
 
-"" Tagbar
-nmap <Leader>tb :TagbarToggle<CR>
+" Define keyword.
+if !exists('g:neocomplete#keyword_patterns')
+    let g:neocomplete#keyword_patterns = {}
+endif
+let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
-"" YouCompleteMe
-let g:ycm_collect_identifiers_from_tags_files = 1
+" Plugin key-mappings.
+inoremap <expr><C-g>     neocomplete#undo_completion()
+inoremap <expr><C-l>     neocomplete#complete_common_string()
 
-"" Vim templates
-let g:templates_no_autocmd = 1
-
-"" XML prettify
-function! PrettifyXML()
-  set ft=xml
-  :%s/></>\r</g
-  :0
-  :norm =G
+" Recommended key-mappings.
+" <CR>: close popup and save indent.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+  return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
+  " For no inserting <CR> key.
+  "return pumvisible() ? "\<C-y>" : "\<CR>"
 endfunction
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+" Close popup by <Space>.
+"inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
 
-"" ctags
-" Exclude Javascript files in :Rtags via rails.vim due to warnings when parsing
-let g:Tlist_Ctags_Cmd="ctags --exclude='*.js' --exclude=.git"
+" AutoComplPop like behavior.
+"let g:neocomplete#enable_auto_select = 1
 
-" Index ctags from any project, including those outside Rails
-map <Leader>ct :!ctags -R .<CR>
+" Shell like behavior(not recommended).
+"set completeopt+=longest
+"let g:neocomplete#enable_auto_select = 1
+"let g:neocomplete#disable_auto_complete = 1
+"inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
 
-"" Instant Markdown
-let g:instant_markdown_autostart = 0
+" Enable omni completion.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 
-" RSpec.vim mappings
-map <Leader>t :call RunCurrentSpecFile()<CR>
-map <Leader>s :call RunNearestSpec()<CR>
-map <Leader>l :call RunLastSpec()<CR>
-map <Leader>a :call RunAllSpecs()<CR>
+" Enable heavy omni completion.
+if !exists('g:neocomplete#sources#omni#input_patterns')
+  let g:neocomplete#sources#omni#input_patterns = {}
+endif
+"let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+"let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+"let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 
-let g:rspec_command = "Dispatch rspec {spec}"
+" For perlomni.vim setting.
+" https://github.com/c9s/perlomni.vim
+let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 
-" Always use vertical diffs
-set diffopt+=vertical
-
-"" Syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_loc_list_height = 5
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 1
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_javascript_eslint_exec = 'eslint_d'
-
-
-"" JSX
-let g:jsx_ext_required = 0
-
-""" Poligono industrial
-function! ExtractModule()
-  try
-    let name = common#get_input("Variable name: ", "No variable name given!")
-  catch
-    echo v:exception
-    return
-  endtry
-
-  call s:select_variable_contents()
-
-  let filename = substitute(name, '_\([a-z]\)', '\u\1', 'g')
-
-  " Replace selected text with the variable name
-  exec "normal c" . "var " . name . " = " . "require('./" . filename . "');"
-
-  " Paste the original selected text to be the variable value
-  exec "$ w " . filename . ".js"
-  let foo = "module.exports = " . name . ";"
-  exec "foo w >>" . a:filename . ".js"
-endfunction
-
-function! s:select_variable_contents()
-  " select current word or re-establish selection
-  " (not sure why we need to re-select)
-  if (visualmode() == "")
-    normal! viw
-  else
-    normal! gv
-  endif
-endfunction
-
+call neocomplete#util#set_default_dictionary(
+  \ 'g:neocomplete#sources#omni#input_patterns',
+  \ 'elm',
+  \ '\.')

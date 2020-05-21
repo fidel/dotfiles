@@ -1,186 +1,94 @@
-set rtp+=/usr/local/opt/fzf
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.vim/bundle')
+
+Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-eunuch'
-Plug 'tpope/vim-Dispatch'
-Plug 'junegunn/fzf.vim'
-Plug 'rking/ag.vim'
-Plug 'Shougo/neocomplete.vim'
-Plug 'regedarek/ZoomWin'
-Plug 'mattn/gist-vim'
-Plug 'mattn/webapi-vim'
-Plug 'bling/vim-airline'
 Plug 'tpope/vim-surround'
-Plug 'vim-ruby/vim-ruby'
-Plug 'godlygeek/tabular'
-Plug 'janko-m/vim-test'
-Plug 'neomake/neomake'
-" Plug 'eslint/eslint'
-Plug 'prettier/vim-prettier', {
-  \ 'do': 'yarn install',
-  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue'] }
-Plug 'scrooloose/nerdcommenter'
-Plug 'mxw/vim-jsx'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-dispatch'
 Plug 'skwp/greplace.vim'
-Plug 'evidanary/grepg.vim'
-Plug 'Shougo/unite.vim'
-Plug 'Shougo/vimfiler.vim'
-Plug 'sbdchd/neoformat'
-Plug 'christoomey/vim-tmux-runner'
+Plug 'scrooloose/nerdcommenter'
+Plug 'regedarek/ZoomWin'
+Plug 'godlygeek/tabular'
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'mxw/vim-jsx'
+Plug 'prettier/vim-prettier', {
+      \ 'do': 'yarn install',
+      \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'markdown', 'yaml', 'html', 'ruby'] }
 Plug 'ElmCast/elm-vim'
-Plug 'tmux-plugins/vim-tmux-focus-events'
-" Plug 'lifepillar/vim-wwdc16-theme'
-" Plug 'NLKNguyen/papercolor-theme'
-" Plug 'morhetz/gruvbox'
-Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'mattn/gist-vim'
+Plug 'atelierbram/Base2Tone-vim'
+Plug 'kristijanhusak/vim-carbon-now-sh'
+
 call plug#end()
 
-
+set nocompatible
+set pastetoggle=<F2>
+filetype plugin indent on
+set background=dark
+colorscheme Base2Tone_EveningDark
 syntax on
-color dracula
-set number
-set expandtab
-set shiftwidth=2
-set softtabstop=2
-set shortmess+=I
-set ruler
-set cursorline
-set showbreak=↪
-set colorcolumn=120
-set wrap
-set noswapfile
-
-set shell=bash
-set shellcmdflag=-c
-set backupdir=~/.vim/backup//
-set directory=~/.vim/swap//
-set undodir=~/.vim/undo//
-
-
-let test#strategy = "dispatch"
-map <Leader>v :VtrOpenRunner { 'orientation': 'h', 'percentage': 40 }<CR>
-" map <Leader>. :TestLast<CR>
-
-nmap <silent> <leader>t :TestNearest<CR>
-nmap <silent> <leader>T :TestFile<CR>
-nmap <silent> <leader>a :TestSuite<CR>
-nmap <silent> <leader>l :TestLast<CR>
-nmap <silent> <leader>g :TestVisit<CR>
-
-
-let mapleader=','
-let g:gist_detect_filetype = 1
-let g:gist_open_browser_after_post = 1
-let g:airline_powerline_fonts = 1
-let g:airline_left_sep = ''
-let g:airline_right_sep = ''
-let g:deoplete#enable_at_startup = 1
-let g:NERDSpaceDelims = 1
-let g:NERDCompactSexyComs = 1
-let g:NERDDefaultAlign = 'left'
-let g:jsx_ext_required = 0
-
-let test#javascript#mocha#executable = "webpack/node_modules/.bin/mocha"
-let test#javascript#mocha#options = "--compilers js:babel/register -r webpack/test/helpers.js"
-
-map <Leader><Leader> :ZoomWin<CR>
-map <Leader>= <C-w>=
-
-map <C-p> :Files<CR>
-map <C-t> :Files<CR>
-
-au BufWritePre * :%s/\s\+$//e
-" autocmd BufWritePre *.js exe "normal! gggqG\<C-o>\<C-o>"
-autocmd BufWritePre *.js Neoformat
-
-"" Tabular
-nmap <Leader>a= :Tabularize /=<CR>
-vmap <Leader>a= :Tabularize /=<CR>
-nmap <Leader>a> :Tabularize /=><CR>
-vmap <Leader>a> :Tabularize /=><CR>
-nmap <Leader>a{ :Tabularize /:<CR>
-vmap <Leader>a{ :Tabularize /:<CR>
-nmap <Leader>a: :Tabularize /:\zs<CR>
-vmap <Leader>a: :Tabularize /:\zs<CR>
-"
-"" Perf issues on Ruby
+set display=lastline
+set scrolloff=1
+set sidescrolloff=5
 set lazyredraw
-set regexpengine=1
+set number
 
-"Note: This option must be set in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
-" Disable AutoComplPop.
-let g:acp_enableAtStartup = 0
-" Use neocomplete.
-let g:neocomplete#enable_at_startup = 1
-" Use smartcase.
-let g:neocomplete#enable_smart_case = 1
-" Set minimum syntax keyword length.
-let g:neocomplete#sources#syntax#min_keyword_length = 3
+set backupdir=.backup/,~/.backup/,/tmp//
+set directory=.swp/,~/.swp/,/tmp//
+set undodir=.undo/,~/.undo/,/tmp//
 
-" Define dictionary.
-let g:neocomplete#sources#dictionary#dictionaries = {
-    \ 'default' : '',
-    \ 'vimshell' : $HOME.'/.vimshell_hist',
-    \ 'scheme' : $HOME.'/.gosh_completions'
-        \ }
+let mapleader=","
+set tabstop=2
+set shiftwidth=2
+set softtabstop=0
+set expandtab
 
-" Define keyword.
-if !exists('g:neocomplete#keyword_patterns')
-    let g:neocomplete#keyword_patterns = {}
-endif
-let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+set confirm
+set showcmd
 
-" Plugin key-mappings.
-inoremap <expr><C-g>     neocomplete#undo_completion()
-inoremap <expr><C-l>     neocomplete#complete_common_string()
+set textwidth=78
+set backspace=2
+set autoindent
 
-" Recommended key-mappings.
-" <CR>: close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-  return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
-  " For no inserting <CR> key.
-  "return pumvisible() ? "\<C-y>" : "\<CR>"
-endfunction
-" <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-" Close popup by <Space>.
-"inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
+set grepprg=ag
+let g:grep_cmd_opts = '--line-numbers --noheading'
 
-" AutoComplPop like behavior.
-"let g:neocomplete#enable_auto_select = 1
+map <Leader>= <C-w>=
+map <Leader><Leader> :ZoomWin<CR>
 
-" Shell like behavior(not recommended).
-"set completeopt+=longest
-"let g:neocomplete#enable_auto_select = 1
-"let g:neocomplete#disable_auto_complete = 1
-"inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit' }
+let g:fzf_layout = { 'down': '~40%' }
 
-" Enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+nnoremap <silent> <Leader>p  :Files<CR>
+nnoremap <silent> <Leader>t  :Files<CR>
+nnoremap <silent> <Leader><Enter>  :Buffers<CR>
+nnoremap <silent> <Leader>ag       :Ag <C-R><C-W><CR>
+nnoremap <silent> <Leader>AG       :Ag <C-R><C-A><CR>
+xnoremap <silent> <Leader>ag       y:Ag <C-R>"<CR>
 
-" Enable heavy omni completion.
-if !exists('g:neocomplete#sources#omni#input_patterns')
-  let g:neocomplete#sources#omni#input_patterns = {}
-endif
-"let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-"let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-"let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+" Mapping selecting mappings
+nmap <leader><tab> <plug>(fzf-maps-n)
+xmap <leader><tab> <plug>(fzf-maps-x)
+omap <leader><tab> <plug>(fzf-maps-o)
 
-" For perlomni.vim setting.
-" https://github.com/c9s/perlomni.vim
-let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+" Insert mode completion
+imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+imap <c-x><c-l> <plug>(fzf-complete-line)
 
-call neocomplete#util#set_default_dictionary(
-  \ 'g:neocomplete#sources#omni#input_patterns',
-  \ 'elm',
-  \ '\.')
+let g:gist_clip_command = 'pbcopy'
+let g:gist_detect_filetype = 1
+let g:gist_show_privates = 1
+
+" autocmd BufWritePre * %s/\s\+$//e
+
+" let g:prettier#quickfix_enabled = 0
+" autocmd TextChanged,InsertLeave *.js,*.jsx,*.css,*.less,*.scss,*.json,,*.md,*.yaml,*.html,*.rb,*.erb PrettierAsync

@@ -1,0 +1,86 @@
+#!/usr/bin/env bash
+
+set -e
+
+# Create symlinks from iCloud to home directory
+cd "$HOME"
+[ ! -L iCloudDrive ] && ln -s "$HOME/Library/Mobile Documents/com~apple~CloudDocs" iCloudDrive
+
+for link in Brewfile .config .gitconfig .gitignore_global .vim .vimrc bin .tmux.conf .iterm2; do
+  if [ -L "$HOME/$link" ]; then
+    echo "Link '$link' already exists"
+  else
+    ln -s "iCloudDrive/dotfiles/$link" .
+  fi
+done
+
+## link .ssh config
+mkdir -p "$HOME/.ssh"
+cd "$HOME/.ssh"
+[ ! -L config ] && ln -s ../iCloudDrive/dotfiles/.ssh/config .
+cd ..
+
+## link .gnupg config
+mkdir -p "$HOME/.gnupg"
+cd "$HOME/.gnupg"
+[ ! -L gpg-agent.conf ] && ln -s ../iCloudDrive/dotfiles/.gnupg/gpg-agent.conf .
+[ ! -L gpg.conf ] && ln -s ../iCloudDrive/dotfiles/.gnupg/gpg.conf .
+cd ..
+
+# Set macOS default hidden settings
+
+## Disabling shadows on windows when taking screenshots - requires killall SystemUIServer
+defaults write com.apple.screencapture disable-shadow -bool true
+## allow disabling inline video in safari http://www.kirkville.com/stop-auto-play-videos-from-annoying-you-in-your-browser/
+defaults write com.apple.Safari WebKitMediaPlaybackAllowsInline -bool false
+defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2AllowsInlineMediaPlayback -bool false
+# Autohide the dock
+defaults write com.apple.dock autohide -int 1
+
+# Install things
+if command -v brew; then
+  echo "Homebrew installed; updating:"
+  brew update && brew bundle
+else
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+fi
+
+# Install all fzf goodies
+/usr/local/opt/fzf/install --all
+
+# Switch to fish shell
+fish <<'END_FISH'
+  if grep fish /etc/shells
+    echo Found fish
+  else
+    echo /usr/local/bin/fish | sudo tee -a /etc/shells
+  end
+  if test (dscl . -read /Users/$USER UserShell | grep fish)
+    echo Fish already a default shell
+  else
+    chsh -s /usr/local/bin/fish
+  end
+  set fish_greeting
+  set -Ux EDITOR vim
+  abbr -a g git
+END_FISH
+
+# Setup GPG key
+if gpg --list-secret-keys | grep -q 9BB0E676; then
+  echo "GPG key in place"
+else
+  keybase pgp export | gpg --import
+  keybase pgp export --secret | gpg --allow-secret-key --import
+fi
+
+## Set up ruby
+RUBY_VERSION="2.7.1"
+if [ -d ".rbenv/versions/$RUBY_VERSION" ]; then
+  echo "Ruby $RUBY_VERSION already installed"
+else
+  ruby-install --install-dir "$HOME/.rbenv/versions/$RUBY_VERSION" ruby "$RUBY_VERSION" -- --with-jemalloc
+fi
+eval "$(rbenv init -)"
+rbenv global "$RUBY_VERSION"
+
+fish -c "source $HOME/.config/fish/config.fish"

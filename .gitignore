@@ -1,4 +1,9 @@
-vim/backup/*
-vim/bundle/*
+.vim/backup/*
+.vim/bundle/*
+.vim/autoload/*
 *.swp
 .netrwhist
+.config/yarn/*
+.config/configstore/*
+.config/fish/functions/*
+.config/fish/fish_variables

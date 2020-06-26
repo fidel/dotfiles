@@ -1,0 +1,79 @@
+[core]
+  excludesfile = /Users/fidel/.gitignore_global
+  editor = vim
+  quotepath = false
+  pager = /usr/local/var/homebrew/linked/git/share/git-core/contrib/diff-highlight/diff-highlight | less
+[alias]
+  aa = add .
+  st = status
+  ci = commit -v
+  co = checkout
+  br = branch
+  dc = diff --cached
+  d  = diff
+  ri = rebase -i
+  rc = rebase --continue
+  rs = rebase --skip
+  ra = rebase --abort
+  ap = add -p
+  sp = stash --patch
+  vomit = commit
+[user]
+  name = Szymon Fiedler
+  email = szymon.fiedler@gmail.com
+  signingkey = 9BB0E676
+[color]
+  branch = auto
+  diff = auto
+  interactive = auto
+  status = auto
+  ui = always
+;[color "diff"]
+;  commit = green
+;  meta = yellow
+;  frag = cyan
+;  old = red
+;  new = green
+;  whitespace = red reverse
+;[color "diff-highlight"]
+;  oldNormal = red bold
+;  oldHighlight = red bold 52
+;  newNormal = green bold
+;  newHighlight = green bold 22
+[merge]
+  tool = opendiff
+[github]
+  user = fidel
+[difftool "sourcetree"]
+  cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+  path =
+[mergetool "sourcetree"]
+  cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+  trustExitCode = true
+[help]
+  autocorrect = 1
+[push]
+  default = current
+[filter "media"]
+  clean = git-media-clean %f
+  smudge = git-media-smudge %f
+[filter "hawser"]
+  clean = git hawser clean %f
+  smudge = git hawser smudge %f
+  required = true
+[filter "lfs"]
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
+[pull]
+  rebase = true
+;[interactive]
+;  diffFilter  = /usr/local/var/homebrew/linked/git/share/git-core/contrib/diff-highlight/diff-highlight
+[diff]
+  compactionHeuristic = 1
+  word-diff = color
+  indentHeuristic = true
+[commit]
+  ;template = /Users/fidel/.stCommitMsg
+  gpgsign = true

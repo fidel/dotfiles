@@ -29,9 +29,10 @@ call plug#end()
 set nocompatible
 set pastetoggle=<F2>
 filetype plugin indent on
+set termguicolors
+syntax on
 set background=dark
 colorscheme Base2Tone_EveningDark
-syntax on
 set display=lastline
 set scrolloff=1
 set sidescrolloff=5

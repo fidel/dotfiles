@@ -74,6 +74,7 @@
   compactionHeuristic = 1
   word-diff = color
   indentHeuristic = true
+  noprefix = true
 [commit]
   ;template = /Users/fidel/.stCommitMsg
   gpgsign = true

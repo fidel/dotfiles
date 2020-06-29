@@ -61,3 +61,4 @@ mas "GIPHY Capture", id: 668208984
 mas "Baby Monitor 3G", id: 626137367
 mas "Tapes", id: 779457527
 mas "Quip", id: 1003160018
+mas "Kindle", id: 405399194

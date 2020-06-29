@@ -91,7 +91,7 @@ imap <c-x><c-l> <plug>(fzf-complete-line)
 let g:gist_clip_command = 'pbcopy'
 let g:gist_detect_filetype = 1
 let g:gist_show_privates = 1
-let g:gist_use_password_in_gitconfig = 1
+let g:gist_use_password_in_gitconfig = 0
 
 " autocmd BufWritePre * %s/\s\+$//e
 

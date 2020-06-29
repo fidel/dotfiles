@@ -29,7 +29,9 @@ call plug#end()
 set nocompatible
 set pastetoggle=<F2>
 filetype plugin indent on
-set termguicolors
+if (has("termguicolors"))
+  set termguicolors
+endif
 syntax on
 set background=dark
 colorscheme Base2Tone_EveningDark

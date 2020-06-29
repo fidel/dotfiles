@@ -29,6 +29,7 @@ brew "postgresql"
 brew "mysql"
 brew "mas"
 brew "youtube-dl"
+brew "speedtest-cli"
 
 cask "chromedriver"
 cask "iterm2"

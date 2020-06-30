@@ -44,6 +44,7 @@ cask "inkscape"
 cask "brave-browser"
 cask "chirp"
 cask "vox"
+cask "vox-preferences-pane"
 cask "keybase"
 
 mas "1Password 7", id: 1333542190

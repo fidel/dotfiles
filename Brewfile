@@ -46,6 +46,7 @@ cask "chirp"
 cask "vox"
 cask "vox-preferences-pane"
 cask "keybase"
+cask "docker"
 
 mas "1Password 7", id: 1333542190
 mas "Magnet", id: 441258766

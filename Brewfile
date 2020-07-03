@@ -52,7 +52,6 @@ mas "1Password 7", id: 1333542190
 mas "Magnet", id: 441258766
 mas "AdGuard for Safari", id: 1440147259
 mas "Noko", id: 879917538
-mas "Twitter", id: 1482454543
 mas "Gestimer", id: 990588172
 mas "WhatsApp", id: 1147396723
 mas "Pixelmator", id: 407963104

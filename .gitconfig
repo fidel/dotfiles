@@ -9,7 +9,7 @@
   ci = commit -v
   co = checkout
   br = branch
-  dc = diff --cached
+  ds = diff --staged
   d  = diff
   ri = rebase -i
   rc = rebase --continue

@@ -21,20 +21,22 @@ Plug 'prettier/vim-prettier', {
 Plug 'ElmCast/elm-vim'
 Plug 'mattn/webapi-vim'
 Plug 'mattn/gist-vim'
-Plug 'atelierbram/Base2Tone-vim'
+"Plug 'atelierbram/Base2Tone-vim'
+Plug 'morhetz/gruvbox'
 Plug 'kristijanhusak/vim-carbon-now-sh'
 
 call plug#end()
 
+autocmd vimenter * ++nested colorscheme gruvbox
 set nocompatible
 set pastetoggle=<F2>
 filetype plugin indent on
-if (has("termguicolors"))
-  set termguicolors
-endif
+"if (has("termguicolors"))
+"  set termguicolors
+"endif
 syntax on
-set background=dark
-colorscheme Base2Tone_EveningDark
+set background=light
+colorscheme gruvbox
 set display=lastline
 set scrolloff=1
 set sidescrolloff=5

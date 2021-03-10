@@ -65,7 +65,6 @@
 ;[interactive]
 ;  diffFilter  = /usr/local/var/homebrew/linked/git/share/git-core/contrib/diff-highlight/diff-highlight
 [diff]
-  compactionHeuristic = 1
   word-diff = color
   indentHeuristic = true
   noprefix = true

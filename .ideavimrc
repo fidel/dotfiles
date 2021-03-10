@@ -1,0 +1,22 @@
+let mapleader=","
+set surround
+set commentary
+
+set showmode
+" set so=5
+set incsearch
+set nu
+
+set ideajoin
+set ideastatusicon=gray
+set idearefactormode=keep
+
+" Map \r to the Reformat Code action
+:map \r :action ReformatCode<CR>
+
+" Map <leader>d to start debug
+:map <leader>d :action Debug<CR>
+
+" Map \b to toggle the breakpoint on the current line
+:map \b :action ToggleLineBreakpoint<CR>
+

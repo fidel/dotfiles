@@ -1,14 +1,16 @@
 tap "homebrew/cask"
 tap "heroku/brew"
+tap "thoughtbot/formulae"
 
 cask_args appdir: "/Applications"
 
 brew "git"
+brew "git-standup"
 brew "gist"
 brew "gnupg"
 brew "pinentry-mac"
 brew "fish"
-brew "node"
+brew "node@14"
 brew "jemalloc"
 brew "rbenv" 
 brew "ruby-install"
@@ -21,7 +23,6 @@ brew "the_silver_searcher"
 brew "htop"
 brew "gnu-sed"
 brew "httpie"
-brew "prettier"
 brew "vim"
 brew "tmux"
 brew "sqlite"
@@ -30,6 +31,9 @@ brew "mysql"
 brew "mas"
 brew "youtube-dl"
 brew "speedtest-cli"
+brew "imagemagick"
+brew "puma-dev"
+brew "parity"
 
 cask "chromedriver"
 cask "iterm2"
@@ -47,6 +51,13 @@ cask "vox"
 cask "vox-preferences-pane"
 cask "keybase"
 cask "docker"
+cask "1password-cli"
+cask "skype"
+cask "firefox-developer-edition"
+cask "discord"
+cask "discord-ptb"
+cask "steam"
+cask "notion"
 
 mas "1Password 7", id: 1333542190
 mas "Magnet", id: 441258766
@@ -64,3 +75,6 @@ mas "Baby Monitor 3G", id: 626137367
 mas "Tapes", id: 779457527
 mas "Quip", id: 1003160018
 mas "Kindle", id: 405399194
+mas "Annotate", id: 918207447
+mas "Be Focused Pro - Focus Timer", id: 961632517
+

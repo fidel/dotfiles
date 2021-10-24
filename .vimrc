@@ -1,3 +1,4 @@
+language en_US.UTF-8
 call plug#begin('~/.vim/bundle')
 
 Plug 'vim-ruby/vim-ruby'

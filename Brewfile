@@ -1,23 +1,26 @@
 tap "homebrew/cask"
+tap "homebrew/cask-versions"
 tap "heroku/brew"
 tap "thoughtbot/formulae"
+tap "stripe/stripe-cli"
+tap "puma/puma"
 
 cask_args appdir: "/Applications"
 
 brew "git"
 brew "git-standup"
 brew "gist"
+brew "tig"
 brew "gnupg"
 brew "pinentry-mac"
 brew "fish"
-brew "node@14"
+brew "node@16"
 brew "jemalloc"
-brew "rbenv" 
+brew "rbenv"
 brew "ruby-install"
 brew "wget"
 brew "tree"
 brew "heroku"
-brew "yarn"
 brew "fzf"
 brew "the_silver_searcher"
 brew "htop"
@@ -33,9 +36,16 @@ brew "youtube-dl"
 brew "speedtest-cli"
 brew "imagemagick"
 brew "puma-dev"
-brew "parity"
+brew "libvips"
+brew "libheif"
+brew "stripe"
+brew "redis"
+brew "neo4j"
+brew "openssl"
+brew "elm"
 
 cask "chromedriver"
+cask "google-chrome"
 cask "iterm2"
 cask "slack"
 cask "spotify"
@@ -58,6 +68,15 @@ cask "discord"
 cask "discord-ptb"
 cask "steam"
 cask "notion"
+cask "gog-galaxy"
+cask "porting-kit"
+cask "adobe-acrobat-reader"
+cask "ngrok"
+cask "loom"
+cask "karabiner-elements"
+cask "monitorcontrol"
+cask "scratch"
+cask "tuple"
 
 mas "1Password 7", id: 1333542190
 mas "Magnet", id: 441258766
@@ -73,8 +92,9 @@ mas "Messenger", id: 1480068668
 mas "GIPHY Capture", id: 668208984
 mas "Baby Monitor 3G", id: 626137367
 mas "Tapes", id: 779457527
-mas "Quip", id: 1003160018
 mas "Kindle", id: 405399194
 mas "Annotate", id: 918207447
 mas "Be Focused Pro - Focus Timer", id: 961632517
+mas "Reeder 5", id: 1529448980
+mas "Joystick Show", id: 515886877
 

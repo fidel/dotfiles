@@ -16,27 +16,21 @@ Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'mxw/vim-jsx'
 Plug 'prettier/vim-prettier', {
-      \ 'do': 'yarn install',
+      \ 'do': 'npm install',
       \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'markdown', 'yaml', 'html', 'ruby'] }
 Plug 'ElmCast/elm-vim'
 Plug 'mattn/webapi-vim'
 Plug 'mattn/gist-vim'
-"Plug 'atelierbram/Base2Tone-vim'
-Plug 'morhetz/gruvbox'
 Plug 'kristijanhusak/vim-carbon-now-sh'
 
 call plug#end()
 
-autocmd vimenter * ++nested colorscheme gruvbox
+"autocmd vimenter * ++nested colorscheme gruvbox
 set nocompatible
 set pastetoggle=<F2>
 filetype plugin indent on
-"if (has("termguicolors"))
-"  set termguicolors
-"endif
 syntax on
 set background=light
-colorscheme gruvbox
 set display=lastline
 set scrolloff=1
 set sidescrolloff=5

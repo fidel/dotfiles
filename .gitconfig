@@ -1,5 +1,5 @@
 [core]
-  excludesfile = /Users/fidel/.gitignore_global
+  excludesfile = ~/.gitignore_global
   editor = vim
   quotepath = false
   pager = /usr/local/var/homebrew/linked/git/share/git-core/contrib/diff-highlight/diff-highlight | less
@@ -28,18 +28,6 @@
   interactive = auto
   status = auto
   ui = always
-;[color "diff"]
-;  commit = green
-;  meta = yellow
-;  frag = cyan
-;  old = red
-;  new = green
-;  whitespace = red reverse
-;[color "diff-highlight"]
-;  oldNormal = red bold
-;  oldHighlight = red bold 52
-;  newNormal = green bold
-;  newHighlight = green bold 22
 [merge]
   tool = opendiff
 [github]
@@ -62,12 +50,9 @@
   required = true
 [pull]
   rebase = true
-;[interactive]
-;  diffFilter  = /usr/local/var/homebrew/linked/git/share/git-core/contrib/diff-highlight/diff-highlight
 [diff]
   word-diff = color
   indentHeuristic = true
   noprefix = true
 [commit]
-  ;template = /Users/fidel/.stCommitMsg
   gpgsign = true

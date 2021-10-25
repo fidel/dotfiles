@@ -16,9 +16,7 @@ Plug 'godlygeek/tabular'
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'mxw/vim-jsx'
-Plug 'prettier/vim-prettier', {
-      \ 'do': 'npm install',
-      \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'markdown', 'yaml', 'html', 'ruby'] }
+Plug 'prettier/vim-prettier'
 Plug 'ElmCast/elm-vim'
 Plug 'mattn/webapi-vim'
 Plug 'mattn/gist-vim'

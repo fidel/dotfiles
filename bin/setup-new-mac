@@ -6,7 +6,7 @@ set -e
 cd "$HOME"
 [ ! -L iCloudDrive ] && ln -s "$HOME/Library/Mobile Documents/com~apple~CloudDocs" iCloudDrive
 
-for link in Brewfile .config .gitconfig .gitignore_global .vim .vimrc .ideavimrc bin .tmux.conf .iterm2 .irbrc; do
+for link in Brewfile Brewfile.lock.json .config .gitconfig .gitignore_global .vim .vimrc .ideavimrc bin .tmux.conf .iterm2 .irbrc; do
   if [ -L "$HOME/$link" ]; then
     echo "Link '$link' already exists"
   else

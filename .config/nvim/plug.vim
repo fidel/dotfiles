@@ -12,6 +12,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-vinegar'
+Plug 'tpope/vim-dispatch'
 Plug 'preservim/nerdcommenter'
 Plug 'vim-test/vim-test'
 

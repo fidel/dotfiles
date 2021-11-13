@@ -7,3 +7,5 @@
 .config/configstore/*
 .config/fish/functions/*
 .config/fish/fish_variables
+.config/gh/
+.config/stripe/

@@ -5,6 +5,7 @@ tap "thoughtbot/formulae"
 tap "stripe/stripe-cli"
 tap "puma/puma"
 tap "cooklang/tap"
+tap "cormacrelf/tap"
 
 cask_args appdir: "/Applications"
 
@@ -51,6 +52,8 @@ brew "luajit"
 brew "gh"
 brew "exa"
 brew "cook"
+brew "fd"
+brew "dark-notify"
 
 cask "chromedriver"
 cask "google-chrome"

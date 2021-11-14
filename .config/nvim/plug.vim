@@ -15,6 +15,7 @@ Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-dispatch'
 Plug 'preservim/nerdcommenter'
 Plug 'vim-test/vim-test'
+Plug 'troydm/zoomwintab.vim'
 
 if has("nvim")
   Plug 'EdenEast/nightfox.nvim'

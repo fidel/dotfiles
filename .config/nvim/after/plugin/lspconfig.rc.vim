@@ -20,7 +20,6 @@ lua << EOF
 
     local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
     local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-
     local opts = { noremap = true, silent = true }
 
     buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
@@ -39,14 +38,25 @@ lua << EOF
 
   local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-  lsp_config.elmls.setup {
-    on_attach = on_attach,
-    capabilities = capabilities
-  }
+  local null_ls = require("null-ls")
 
-  lsp_config.solargraph.setup {
-    on_attach = on_attach,
-    capabilities = capabilities
-  }
+  null_ls.config({
+    sources = {
+    	null_ls.builtins.code_actions.gitsigns,
+    	null_ls.builtins.formatting.stylua,
+    	null_ls.builtins.formatting.prettier.with({
+    		filetypes = { "ruby", require("plenary").tbl.unpack(null_ls.builtins.formatting.prettier.filetypes) }
+      }),
+      null_ls.builtins.formatting.fish_indent,
+    },
+  })
+
+  local servers = { "null-ls", "solargraph", "elmls" }
+  for _, lsp in ipairs(servers) do
+    lsp_config[lsp].setup({
+    	on_attach = on_attach,
+    	capabilities = capabilities,
+    })
+  end
 EOF
 

@@ -37,6 +37,7 @@ if has("nvim")
   Plug 'tami5/sqlite.lua'
   Plug 'cormacrelf/dark-notify'
   Plug 'nathom/filetype.nvim'
+  Plug 'jose-elias-alvarez/null-ls.nvim'
 endif
 
 call plug#end()

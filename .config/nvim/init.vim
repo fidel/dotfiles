@@ -86,3 +86,7 @@ let test#strategy = {
   \ 'suite':   'basic',
 \}
 
+lua <<EOF
+  vim.g.did_load_filetypes = 1
+EOF
+

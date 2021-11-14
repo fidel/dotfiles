@@ -36,6 +36,7 @@ if has("nvim")
   Plug 'nvim-telescope/telescope-github.nvim'
   Plug 'tami5/sqlite.lua'
   Plug 'cormacrelf/dark-notify'
+  Plug 'nathom/filetype.nvim'
 endif
 
 call plug#end()

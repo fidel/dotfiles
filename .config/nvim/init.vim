@@ -71,8 +71,11 @@ if exists("&termguicolors") && exists("&winblend")
   set winblend=0
   set wildoptions=pum
   set pumblend=5
-  set background=dark
-  colorscheme nightfox
+  if system('defaults read -g AppleInterfaceStyle') =~ '^Dark'
+    colorscheme nightfox
+  else
+    colorscheme dayfox
+  endif
 endif
 
 set exrc

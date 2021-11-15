@@ -35,10 +35,16 @@ if has("nvim")
   Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
   Plug 'nvim-telescope/telescope-frecency.nvim'
   Plug 'nvim-telescope/telescope-github.nvim'
+  Plug 'nvim-telescope/telescope-dap.nvim'
   Plug 'tami5/sqlite.lua'
   Plug 'cormacrelf/dark-notify'
   Plug 'nathom/filetype.nvim'
   Plug 'jose-elias-alvarez/null-ls.nvim'
+  Plug 'mfussenegger/nvim-dap'
+  Plug 'suketa/nvim-dap-ruby'
+  Plug 'norcalli/nvim-colorizer.lua'
+  Plug 'windwp/nvim-autopairs'
+  Plug 'windwp/nvim-ts-autotag'
 endif
 
 call plug#end()

@@ -56,6 +56,7 @@ augroup BgHighlight
   autocmd WinLeave * set nocul
 augroup END
 
+au TextYankPost * lua vim.highlight.on_yank { higroup = 'IncSearch', timeout = 150, on_visual = true }
 
 au BufNewFile,BufRead *.md set filetype=markdown
 au BufNewFile,BufRead *.fish set filetype=fish

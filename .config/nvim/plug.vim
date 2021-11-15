@@ -33,7 +33,7 @@ if has("nvim")
   Plug 'folke/which-key.nvim'
   Plug 'folke/lsp-colors.nvim'
   Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
-  Plug 'jameshiew/telescope-frecency.nvim'
+  Plug 'nvim-telescope/telescope-frecency.nvim'
   Plug 'nvim-telescope/telescope-github.nvim'
   Plug 'tami5/sqlite.lua'
   Plug 'cormacrelf/dark-notify'

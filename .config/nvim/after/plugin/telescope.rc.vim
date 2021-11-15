@@ -45,6 +45,11 @@ lua << EOF
         theme = "dropdown"
       },
     },
+    extensions = {
+      frecency = {
+        default_workspace = 'CWD'
+      },
+    },
   }
   telescope.load_extension("fzf")
   telescope.load_extension("frecency")

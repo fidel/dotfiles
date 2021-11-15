@@ -58,5 +58,15 @@ lua << EOF
     	capabilities = capabilities,
     })
   end
+
+  lsp_config.solargraph.setup({
+  	on_attach = on_attach,
+  	capabilities = capabilities,
+  	settings = {
+  		solargraph = {
+  			formatting = false,
+  		},
+  	},
+  })
 EOF
 

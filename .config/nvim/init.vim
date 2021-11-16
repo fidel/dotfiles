@@ -15,7 +15,6 @@ set showcmd
 set cmdheight=1
 set scrolloff=10
 set shell=fish
-set backupskip=/tmp/*,/private/tmp/*
 set splitbelow
 set splitright
 

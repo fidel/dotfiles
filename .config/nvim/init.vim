@@ -58,16 +58,15 @@ set suffixesadd=.js,.json,.css,.md,.elm
 runtime ./plug.vim
 runtime ./maps.vim
 
-if exists("&termguicolors") && exists("&winblend")
-  syntax enable
-  set termguicolors
-  set wildoptions=pum
-  set pumblend=5
-  if system('defaults read -g AppleInterfaceStyle') =~ '^Dark'
-    colorscheme nightfox
-  else
-    colorscheme dayfox
-  endif
+syntax enable
+set termguicolors
+set wildoptions=pum
+set pumblend=5
+
+if system('defaults read -g AppleInterfaceStyle') =~ '^Dark'
+  colorscheme nightfox
+else
+  colorscheme dayfox
 endif
 
 let test#strategy = {

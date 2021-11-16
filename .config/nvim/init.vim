@@ -35,6 +35,7 @@ set nowrap
 set path+=**
 set wildignore+=*/node_modules/*
 set signcolumn=yes
+set updatetime=250
 
 autocmd InsertLeave * set nopaste
 set formatoptions+=r

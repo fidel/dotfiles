@@ -70,8 +70,6 @@ if exists("&termguicolors") && exists("&winblend")
   endif
 endif
 
-set exrc
-
 let test#strategy = {
   \ 'nearest': 'neovim',
   \ 'file':    'dispatch',

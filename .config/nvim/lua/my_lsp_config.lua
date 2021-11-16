@@ -12,7 +12,10 @@ local on_attach = function(client, bufnr)
 	end
 
 	if client.resolved_capabilities.document_formatting then
-		vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
+		vim.api.nvim_command([[augroup Format]])
+		vim.api.nvim_command([[autocmd! * <buffer>]])
+		vim.api.nvim_command([[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()]])
+		vim.api.nvim_command([[augroup END]])
 	end
 
 	local function buf_set_keymap(...)
@@ -66,10 +69,10 @@ for _, lsp in ipairs(servers) do
 end
 
 lsp_config.solargraph.setup({
-  	on_attach = function(client, bufnr)
- 		client.resolved_capabilities.document_formatting = false
- 		on_attach(client, bufnr)
- 	end,
+	on_attach = function(client, bufnr)
+		client.resolved_capabilities.document_formatting = false
+		on_attach(client, bufnr)
+	end,
 	capabilities = capabilities,
 	settings = {
 		solargraph = {
@@ -77,4 +80,3 @@ lsp_config.solargraph.setup({
 		},
 	},
 })
-

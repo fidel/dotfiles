@@ -3,7 +3,7 @@ if not status then
 	return
 end
 
-vim.o.completeopt = 'menu,menuone,noselect'
+vim.o.completeopt = "menu,menuone,noselect"
 
 local cmp = require("cmp")
 
@@ -63,4 +63,3 @@ cmp.setup.cmdline(":", {
 		{ name = "cmdline" },
 	}),
 })
-

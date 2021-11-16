@@ -14,9 +14,11 @@ local actions = require("telescope.actions")
 local builtin = require("telescope.builtin")
 
 function project_files()
-  local opts = {}
-  local ok = pcall(builtin.git_files, opts)
-  if not ok then builtin.find_files(opts) end
+	local opts = {}
+	local ok = pcall(builtin.git_files, opts)
+	if not ok then
+		builtin.find_files(opts)
+	end
 end
 
 telescope.setup({
@@ -29,7 +31,6 @@ telescope.setup({
 	},
 	pickers = {
 		find_files = {
-			disable_devicons = true,
 			theme = "dropdown",
 		},
 		marks = {
@@ -42,10 +43,18 @@ telescope.setup({
 			theme = "dropdown",
 		},
 	},
+	extensions = {
+		frecency = {
+			workspaces = {
+				["d"] = "/Users/fidel/iCloudDrive/dotfiles",
+				["t"] = "/Users/fidel/Code/trezy",
+				["r"] = "/Users/fidel/Code/rails_event_store",
+			},
+		},
+	},
 })
 
 telescope.load_extension("fzf")
 telescope.load_extension("frecency")
 telescope.load_extension("gh")
 telescope.load_extension("dap")
-

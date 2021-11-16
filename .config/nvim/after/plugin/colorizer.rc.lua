@@ -4,4 +4,3 @@ if not status then
 end
 
 require("colorizer").setup()
-

@@ -22,7 +22,6 @@ if has('nvim')
   set inccommand=split
 endif
 
-set t_BE=
 set nosc noru nosm
 set lazyredraw
 set expandtab

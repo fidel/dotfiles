@@ -1,6 +1,6 @@
 [core]
   excludesfile = ~/.gitignore_global
-  editor = vim
+  editor = nvim
   quotepath = false
   pager = /usr/local/var/homebrew/linked/git/share/git-core/contrib/diff-highlight/diff-highlight | less
 [alias]
@@ -29,7 +29,7 @@
   status = auto
   ui = always
 [merge]
-  tool = opendiff
+  tool = nvim -d
 [github]
   user = fidel
 [help]
@@ -56,3 +56,4 @@
   noprefix = true
 [commit]
   gpgsign = true
+  verbose = true

@@ -47,6 +47,7 @@ Plug 'suketa/nvim-dap-ruby'
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'windwp/nvim-autopairs'
 Plug 'windwp/nvim-ts-autotag'
+Plug 'folke/twilight.nvim'
 
 call plug#end()
 

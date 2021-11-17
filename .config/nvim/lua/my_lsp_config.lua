@@ -1,9 +1,8 @@
-local status, lualine = pcall(require, "lspconfig")
+local status, lsp_config = pcall(require, "lspconfig")
 if not status then
 	return
 end
 
-local lsp_config = require("lspconfig")
 local protocol = require("vim.lsp.protocol")
 
 local on_attach = function(client, bufnr)
@@ -71,12 +70,16 @@ end
 lsp_config.solargraph.setup({
 	on_attach = function(client, bufnr)
 		client.resolved_capabilities.document_formatting = false
+		print("lsp ready")
 		on_attach(client, bufnr)
 	end,
 	capabilities = capabilities,
-	settings = {
-		solargraph = {
-			formatting = false,
-		},
-	},
+})
+
+vim.lsp.diagnostic.show_line_diagnostics()
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+	virtual_text = false,
+	signs = true,
+	underline = true,
+	update_in_insert = false,
 })

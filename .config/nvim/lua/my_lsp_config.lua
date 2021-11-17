@@ -83,3 +83,5 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagn
 	underline = true,
 	update_in_insert = false,
 })
+
+require("lspkind").init()

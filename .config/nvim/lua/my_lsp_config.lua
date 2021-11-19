@@ -70,7 +70,6 @@ end
 lsp_config.solargraph.setup({
 	on_attach = function(client, bufnr)
 		client.resolved_capabilities.document_formatting = false
-		print("lsp ready")
 		on_attach(client, bufnr)
 	end,
 	capabilities = capabilities,

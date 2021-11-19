@@ -14,7 +14,12 @@ local feedkey = function(key, mode)
 	vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
 end
 
+local lspkind = require("lspkind")
+
 cmp.setup({
+	formatting = {
+		format = lspkind.cmp_format({ with_text = false, maxwidth = 50 }),
+	},
 	snippet = {
 		expand = function(args)
 			vim.fn["vsnip#anonymous"](args.body)

@@ -1,3 +1,4 @@
+tap "homebrew/services"
 tap "homebrew/cask"
 tap "homebrew/cask-versions"
 tap "heroku/brew"

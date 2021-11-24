@@ -7,6 +7,7 @@ tap "stripe/stripe-cli"
 tap "puma/puma"
 tap "cooklang/tap"
 tap "cormacrelf/tap"
+tap "homebrew/cask-fonts"
 
 cask_args appdir: "/Applications"
 
@@ -29,7 +30,6 @@ brew "the_silver_searcher"
 brew "htop"
 brew "gnu-sed"
 brew "httpie"
-brew "vim"
 brew "tmux"
 brew "sqlite"
 brew "postgresql"
@@ -47,7 +47,7 @@ brew "neo4j"
 brew "openssl"
 brew "elm"
 brew "ripgrep"
-brew "nvim"
+brew "nvim", args: ["HEAD"]
 brew "tree-sitter"
 brew "luajit"
 brew "gh"
@@ -90,24 +90,24 @@ cask "scratch"
 cask "tuple"
 cask "visual-studio-code"
 cask "github"
+cask "font-jetbrains-mono-nerd-font"
 
-mas "1Password 7", id: 1333542190
-mas "Magnet", id: 441258766
-mas "AdGuard for Safari", id: 1440147259
-mas "Noko", id: 879917538
-mas "Gestimer", id: 990588172
-mas "WhatsApp", id: 1147396723
-mas "Pixelmator", id: 407963104
-mas "The Unarchiver", id: 425424353
-mas "Mactracker", id: 430255202
-mas "iA Writer", id: 775737590
-mas "Messenger", id: 1480068668
-mas "GIPHY Capture", id: 668208984
-mas "Baby Monitor 3G", id: 626137367
-mas "Tapes", id: 779457527
-mas "Kindle", id: 405399194
-mas "Annotate", id: 918207447
-mas "Be Focused Pro - Focus Timer", id: 961632517
-mas "Reeder 5", id: 1529448980
-mas "Joystick Show", id: 515886877
-
+mas "1Password 7", id: 1_333_542_190
+mas "Magnet", id: 441_258_766
+mas "AdGuard for Safari", id: 1_440_147_259
+mas "Noko", id: 879_917_538
+mas "Gestimer", id: 990_588_172
+mas "WhatsApp", id: 1_147_396_723
+mas "Pixelmator", id: 407_963_104
+mas "The Unarchiver", id: 425_424_353
+mas "Mactracker", id: 430_255_202
+mas "iA Writer", id: 775_737_590
+mas "Messenger", id: 1_480_068_668
+mas "GIPHY Capture", id: 668_208_984
+mas "Baby Monitor 3G", id: 626_137_367
+mas "Tapes", id: 779_457_527
+mas "Kindle", id: 405_399_194
+mas "Annotate", id: 918_207_447
+mas "Be Focused Pro - Focus Timer", id: 961_632_517
+mas "Reeder 5", id: 1_529_448_980
+mas "Joystick Show", id: 515_886_877

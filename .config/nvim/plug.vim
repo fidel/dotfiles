@@ -16,6 +16,8 @@ Plug 'preservim/nerdcommenter'
 Plug 'vim-test/vim-test'
 Plug 'troydm/zoomwintab.vim'
 Plug 'puremourning/vimspector'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'lambdalisue/glyph-palette.vim'
 
 Plug 'EdenEast/nightfox.nvim'
 Plug 'nvim-lualine/lualine.nvim'
@@ -38,6 +40,7 @@ Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'nvim-telescope/telescope-frecency.nvim'
 Plug 'nvim-telescope/telescope-github.nvim'
 Plug 'nvim-telescope/telescope-dap.nvim'
+Plug 'nvim-treesitter/nvim-treesitter-refactor'
 Plug 'tami5/sqlite.lua'
 Plug 'cormacrelf/dark-notify'
 Plug 'nathom/filetype.nvim'
@@ -48,6 +51,8 @@ Plug 'norcalli/nvim-colorizer.lua'
 Plug 'windwp/nvim-autopairs'
 Plug 'windwp/nvim-ts-autotag'
 Plug 'folke/twilight.nvim'
+Plug 'andymass/vim-matchup'
+Plug 'ray-x/lsp_signature.nvim'
 
 call plug#end()
 

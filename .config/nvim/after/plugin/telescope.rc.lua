@@ -31,6 +31,9 @@ telescope.setup({
 		},
 	},
 	pickers = {
+		git_files = {
+			theme = "dropdown",
+		},
 		find_files = {
 			theme = "dropdown",
 		},
@@ -41,9 +44,6 @@ telescope.setup({
 			theme = "dropdown",
 		},
 		live_grep = {
-			theme = "dropdown",
-		},
-		grep_string = {
 			theme = "dropdown",
 		},
 		oldfiles = {

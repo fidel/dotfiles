@@ -44,6 +44,14 @@ local on_attach = function(client, bufnr)
 	buf_set_keymap("n", "<leader>q", "<Cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
 end
 
+vim.lsp.diagnostic.show_line_diagnostics()
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+	virtual_text = false,
+	signs = true,
+	underline = true,
+	update_on_insert = false,
+})
+
 local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
 local null_ls = require("null-ls")
 local tbl = require("plenary").tbl
@@ -74,13 +82,3 @@ lsp_config.solargraph.setup({
 	end,
 	capabilities = capabilities,
 })
-
-vim.lsp.diagnostic.show_line_diagnostics()
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-	virtual_text = false,
-	signs = true,
-	underline = true,
-	update_in_insert = false,
-})
-
-require("lspkind").init()

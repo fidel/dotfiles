@@ -40,6 +40,7 @@ Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'nvim-telescope/telescope-frecency.nvim'
 Plug 'nvim-telescope/telescope-github.nvim'
 Plug 'nvim-telescope/telescope-dap.nvim'
+Plug 'nvim-telescope/telescope-rg.nvim'
 Plug 'nvim-treesitter/nvim-treesitter-refactor'
 Plug 'tami5/sqlite.lua'
 Plug 'cormacrelf/dark-notify'

@@ -6,7 +6,8 @@ end
 local opts = { noremap = true, silent = true }
 vim.api.nvim_set_keymap("n", "<leader>p", "<Cmd>lua project_files()<CR>", opts)
 vim.api.nvim_set_keymap("n", "<leader>e", "<Cmd>Telescope oldfiles<CR>", opts)
-vim.api.nvim_set_keymap("n", "<leader>fg", "<Cmd>Telescope live_grep<CR>", opts)
+vim.api.nvim_set_keymap("n", "<leader>fg", "<Cmd>Telescope live_grep_raw<CR>", opts)
+vim.api.nvim_set_keymap("n", "<leader>flg", "<Cmd>Telescope live_grep<CR>", opts)
 vim.api.nvim_set_keymap("n", "<leader>fb", "<Cmd>Telescope buffers<CR>", opts)
 vim.api.nvim_set_keymap("n", "<leader>fm", "<Cmd>Telescope marks<CR>", opts)
 
@@ -66,3 +67,4 @@ telescope.load_extension("fzf")
 telescope.load_extension("frecency")
 telescope.load_extension("gh")
 telescope.load_extension("dap")
+telescope.load_extension("live_grep_raw")

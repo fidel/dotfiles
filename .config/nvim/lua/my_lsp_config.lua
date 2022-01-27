@@ -56,7 +56,7 @@ local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protoco
 local null_ls = require("null-ls")
 local tbl = require("plenary").tbl
 
-null_ls.config({
+null_ls.setup({
 	sources = {
 		null_ls.builtins.code_actions.gitsigns,
 		null_ls.builtins.formatting.stylua,
@@ -65,15 +65,9 @@ null_ls.config({
 		}),
 		null_ls.builtins.formatting.fish_indent,
 	},
+	on_attach = on_attach,
+	capabilities = capabilities,
 })
-
-local servers = { "null-ls", "elmls" }
-for _, lsp in ipairs(servers) do
-	lsp_config[lsp].setup({
-		on_attach = on_attach,
-		capabilities = capabilities,
-	})
-end
 
 lsp_config.solargraph.setup({
 	on_attach = function(client, bufnr)

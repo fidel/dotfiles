@@ -52,6 +52,7 @@ au TextYankPost * lua vim.highlight.on_yank { higroup = 'IncSearch', timeout = 1
 
 au BufNewFile,BufRead *.md set filetype=markdown
 au BufNewFile,BufRead *.fish set filetype=fish
+au BufNewFile,BufRead *.rake set filetype=ruby
 
 set suffixesadd=.js,.json,.css,.md,.elm
 

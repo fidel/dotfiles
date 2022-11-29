@@ -3,7 +3,7 @@ if not status then
 	return
 end
 
-local colors = require("nightfox.colors").load()
+local colors = require("nightfox.spec").load("nightfox")
 
 local function diff_source()
 	local gitsigns = vim.b.gitsigns_status_dict

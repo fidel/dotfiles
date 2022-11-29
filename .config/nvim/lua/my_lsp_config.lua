@@ -45,7 +45,13 @@ local on_attach = function(client, bufnr)
 end
 
 vim.diagnostic.open_float()
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.diagnostic.on_publish_diagnostics, {
+-- vim.diagnostic.config({
+-- 	virtual_text = false,
+-- 	signs = true,
+-- 	underline = true,
+-- 	update_on_insert = false,
+-- })
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
 	virtual_text = false,
 	signs = true,
 	underline = true,

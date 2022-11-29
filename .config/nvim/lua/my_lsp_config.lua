@@ -10,10 +10,10 @@ local on_attach = function(client, bufnr)
 		client.config.flags.allow_incremental_sync = true
 	end
 
-	if client.resolved_capabilities.document_formatting then
+	if client.server_capabilities.documentFormattingProvider then
 		vim.api.nvim_command([[augroup Format]])
 		vim.api.nvim_command([[autocmd! * <buffer>]])
-		vim.api.nvim_command([[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()]])
+		vim.api.nvim_command([[autocmd BufWritePre <buffer> lua vim.lsp.buf.format()]])
 		vim.api.nvim_command([[augroup END]])
 	end
 
@@ -39,20 +39,28 @@ local on_attach = function(client, bufnr)
 	buf_set_keymap("n", "<leader>so", "<Cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>", opts)
 	buf_set_keymap("n", "<leader>ca", "<Cmd>lua vim.lsp.buf.code_action()<CR>", opts)
 	buf_set_keymap("v", "<leader>ca", "<Cmd>lua vim.lsp.buf.range_code_action()<CR>", opts)
-	buf_set_keymap("n", "[d", "<Cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
-	buf_set_keymap("n", "]d", "<Cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
-	buf_set_keymap("n", "<leader>q", "<Cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
+	buf_set_keymap("n", "[d", "<Cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
+	buf_set_keymap("n", "]d", "<Cmd>lua vim.diagnostic.goto_next()<CR>", opts)
+	buf_set_keymap("n", "<leader>q", "<Cmd>lua vim.diagnostic.set_qflist()<CR>", opts)
 end
 
-vim.lsp.diagnostic.show_line_diagnostics()
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+vim.diagnostic.open_float()
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.diagnostic.on_publish_diagnostics, {
 	virtual_text = false,
 	signs = true,
 	underline = true,
 	update_on_insert = false,
 })
 
-local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+lsp_config.solargraph.setup({
+	on_attach = function(client, bufnr)
+		client.server_capabilities.documentFormattingProvider = false
+		on_attach(client, bufnr)
+	end,
+	capabilities = capabilities,
+})
+
+local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 local null_ls = require("null-ls")
 local tbl = require("plenary").tbl
 
@@ -66,13 +74,5 @@ null_ls.setup({
 		null_ls.builtins.formatting.fish_indent,
 	},
 	on_attach = on_attach,
-	capabilities = capabilities,
-})
-
-lsp_config.solargraph.setup({
-	on_attach = function(client, bufnr)
-		client.resolved_capabilities.document_formatting = false
-		on_attach(client, bufnr)
-	end,
 	capabilities = capabilities,
 })

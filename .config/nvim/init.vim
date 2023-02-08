@@ -18,10 +18,6 @@ set shell=fish
 set splitbelow
 set splitright
 
-if has('nvim')
-  set inccommand=split
-endif
-
 set nosc noru nosm
 set lazyredraw
 set expandtab

@@ -18,6 +18,7 @@ Plug 'troydm/zoomwintab.vim'
 Plug 'puremourning/vimspector'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'lambdalisue/glyph-palette.vim'
+Plug 'github/copilot.vim'
 
 Plug 'EdenEast/nightfox.nvim'
 Plug 'nvim-lualine/lualine.nvim'

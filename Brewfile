@@ -1,13 +1,16 @@
+tap "cooklang/tap"
+tap "cormacrelf/tap"
+tap "heroku/brew"
 tap "homebrew/services"
 tap "homebrew/cask"
 tap "homebrew/cask-versions"
-tap "heroku/brew"
-tap "thoughtbot/formulae"
-tap "stripe/stripe-cli"
-tap "puma/puma"
-tap "cooklang/tap"
-tap "cormacrelf/tap"
+tap "homebrew/cask-drivers"
 tap "homebrew/cask-fonts"
+tap "phrase/brewed"
+tap "puma/puma"
+tap "stripe/stripe-cli"
+tap "thoughtbot/formulae"
+tap "buo/cask-upgrade"
 
 cask_args appdir: "/Applications"
 
@@ -18,7 +21,7 @@ brew "tig"
 brew "gnupg"
 brew "pinentry-mac"
 brew "fish"
-brew "node@16"
+brew "node@18"
 brew "jemalloc"
 brew "rbenv"
 brew "ruby-install"
@@ -32,7 +35,7 @@ brew "gnu-sed"
 brew "httpie"
 brew "tmux"
 brew "sqlite"
-brew "postgresql"
+brew "postgresql@13"
 brew "mysql"
 brew "mas"
 brew "youtube-dl"
@@ -43,11 +46,10 @@ brew "libvips"
 brew "libheif"
 brew "stripe"
 brew "redis"
-brew "neo4j"
 brew "openssl"
 brew "elm"
 brew "ripgrep"
-brew "nvim", args: ["HEAD"]
+brew "nvim"
 brew "tree-sitter"
 brew "luajit"
 brew "gh"
@@ -55,9 +57,11 @@ brew "exa"
 brew "cook"
 brew "fd"
 brew "dark-notify"
+brew "phrase"
+brew "ffmpeg"
+brew "rust"
+brew "asciinema"
 
-cask "chromedriver"
-cask "google-chrome"
 cask "iterm2"
 cask "slack"
 cask "spotify"
@@ -91,6 +95,12 @@ cask "tuple"
 cask "visual-studio-code"
 cask "github"
 cask "font-jetbrains-mono-nerd-font"
+cask "gather"
+cask "garmin-express"
+cask "garmin-basecamp"
+cask "insta360-studio"
+cask "loom"
+cask "viscosity"
 
 mas "1Password 7", id: 1_333_542_190
 mas "Magnet", id: 441_258_766
@@ -99,6 +109,7 @@ mas "Noko", id: 879_917_538
 mas "Gestimer", id: 990_588_172
 mas "WhatsApp", id: 1_147_396_723
 mas "Pixelmator", id: 407_963_104
+mas "Pixelmator Pro", id: 1_289_583_905
 mas "The Unarchiver", id: 425_424_353
 mas "Mactracker", id: 430_255_202
 mas "iA Writer", id: 775_737_590
@@ -111,3 +122,4 @@ mas "Annotate", id: 918_207_447
 mas "Be Focused Pro - Focus Timer", id: 961_632_517
 mas "Reeder 5", id: 1_529_448_980
 mas "Joystick Show", id: 515_886_877
+mas "DaVinci Resolve", id: 571_213_070

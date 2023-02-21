@@ -106,10 +106,10 @@ NODE_VERSION="18.12.0"
 if [ -d ".nodenv/versions/$NODE_VERSION" ]; then
   echo "Node $NODE_VERSION already installed"
 else
-  nodenv install $RUBY_VERSION
+  nodenv install $NODE_VERSION
 fi
 eval "$(nodenv init -)"
-nodenv global "$RUBY_VERSION"
+nodenv global "$NODE_VERSION"
 
 npm install prettier @prettier/plugin-ruby --location=global
 

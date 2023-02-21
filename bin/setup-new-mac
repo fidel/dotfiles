@@ -76,10 +76,10 @@ fi
 fish << 'END_FISH'
   source $HOME/.config/fish/config.fish
   curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
-  rbenv/fish-rbenv
-  cafedomancer/fish-nodenv
-  jethrokuan/z
-  jorgebucaran/hydro
+  fisher install rbenv/fish-rbenv
+  fisher install cafedomancer/fish-nodenv
+  fisher install jethrokuan/z
+  fisher install jorgebucaran/hydro
 END_FISH
 
 ## Set up Ruby

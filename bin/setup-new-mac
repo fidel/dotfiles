@@ -74,11 +74,11 @@ else
 fi
 
 ## Set up ruby
-RUBY_VERSION="3.0.2"
+RUBY_VERSION="3.2.1"
 if [ -d ".rbenv/versions/$RUBY_VERSION" ]; then
   echo "Ruby $RUBY_VERSION already installed"
 else
-  ruby-install --install-dir "$HOME/.rbenv/versions/$RUBY_VERSION" ruby "$RUBY_VERSION" -- --with-jemalloc
+  ruby-install --install-dir "$HOME/.rbenv/versions/$RUBY_VERSION" ruby "$RUBY_VERSION" -- --with-jemalloc --with-yjit
 fi
 eval "$(rbenv init -)"
 rbenv global "$RUBY_VERSION"

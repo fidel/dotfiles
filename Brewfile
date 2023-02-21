@@ -98,6 +98,7 @@ cask "insta360-studio"
 cask "loom"
 cask "viscosity"
 cask "docker"
+cask "rubymine"
 
 mas "1 Password for Safari",id: 1_569_813_296
 mas "Magnet", id: 441_258_766

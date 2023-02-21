@@ -43,9 +43,9 @@ if command -v brew; then
   brew update && brew bundle || true
 else
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-  (echo; echo 'eval "$(/usr/local/bin/brew shellenv)"') >> /Users/fidel/.profile
-  (echo; echo 'eval "$(/usr/local/bin/brew shellenv)"') >> /Users/fidel/.zprofile
-  eval "$(/usr/local/bin/brew shellenv)"
+  (echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> /Users/fidel/.profile
+  (echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> /Users/fidel/.zprofile
+  eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
 # Install all fzf goodies
@@ -56,12 +56,12 @@ fish <<'END_FISH'
   if grep fish /etc/shells
     echo Found fish
   else
-    echo /usr/local/bin/fish | sudo tee -a /etc/shells
+    echo /opt/homebrew/bin/fish | sudo tee -a /etc/shells
   end
   if test (dscl . -read /Users/$USER UserShell | grep fish)
     echo Fish already a default shell
   else
-    chsh -s /usr/local/bin/fish
+    chsh -s /opt/homebrew/bin/fish
   end
   set fish_greeting
   set -Ux EDITOR vim

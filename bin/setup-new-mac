@@ -40,7 +40,7 @@ defaults write com.apple.dock autohide -int 1
 # Install things
 if command -v brew; then
   echo "Homebrew installed; updating:"
-  brew update && brew bundle
+  brew update && brew bundle || true
 else
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
   (echo; echo 'eval "$(/usr/local/bin/brew shellenv)"') >> /Users/fidel/.profile
@@ -49,7 +49,7 @@ else
 fi
 
 # Install all fzf goodies
-/usr/local/opt/fzf/install --all
+/usr/homebrew/opt/fzf/install
 
 # Switch to fish shell
 fish <<'END_FISH'

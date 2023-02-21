@@ -80,6 +80,7 @@ fi
 
 fish << 'END_FISH'
   source $HOME/.config/fish/config.fish
+  fish_add_path -U /opt/homebrew/bin
   curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
   fisher install rbenv/fish-rbenv
   fisher install cafedomancer/fish-nodenv

@@ -11,6 +11,7 @@ tap "puma/puma"
 tap "stripe/stripe-cli"
 tap "thoughtbot/formulae"
 tap "buo/cask-upgrade"
+tap "charmbracelet/tap"
 
 cask_args appdir: "/Applications"
 
@@ -61,6 +62,7 @@ brew "phrase"
 brew "ffmpeg"
 brew "rust"
 brew "asciinema"
+brew "syncthing"
 
 cask "iterm2"
 cask "slack"
@@ -77,6 +79,7 @@ cask "vox"
 cask "vox-preferences-pane"
 cask "keybase"
 cask "docker"
+cask "1password"
 cask "1password-cli"
 cask "skype"
 cask "firefox-developer-edition"
@@ -101,8 +104,9 @@ cask "garmin-basecamp"
 cask "insta360-studio"
 cask "loom"
 cask "viscosity"
+cask "docker"
 
-mas "1Password 7", id: 1_333_542_190
+mas "1 Password for Safari",id: 1_569_813_296
 mas "Magnet", id: 441_258_766
 mas "AdGuard for Safari", id: 1_440_147_259
 mas "Noko", id: 879_917_538

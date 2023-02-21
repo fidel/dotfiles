@@ -43,6 +43,9 @@ if command -v brew; then
   brew update && brew bundle
 else
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+  (echo; echo 'eval "$(/usr/local/bin/brew shellenv)"') >> /Users/fidel/.profile
+  (echo; echo 'eval "$(/usr/local/bin/brew shellenv)"') >> /Users/fidel/.zprofile
+  eval "$(/usr/local/bin/brew shellenv)"
 fi
 
 # Install all fzf goodies

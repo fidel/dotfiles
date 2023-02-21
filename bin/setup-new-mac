@@ -91,6 +91,8 @@ else
 fi
 eval "$(rbenv init -)"
 rbenv global "$RUBY_VERSION"
+gem update --system
+gem update bundler
 
 ## Set up Node
 NODE_VERSION="18.12.0"

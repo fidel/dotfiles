@@ -2,7 +2,7 @@
   excludesFile = ~/.gitignore
   editor = nvim
   quotepath = false
-  pager = /usr/local/var/homebrew/linked/git/share/git-core/contrib/diff-highlight/diff-highlight | less
+  pager = /opt/homebrew/var/homebrew/linked/git/share/git-core/contrib/diff-highlight/diff-highlight | less
 [alias]
   aa = add .
   st = status

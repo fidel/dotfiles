@@ -48,6 +48,5 @@
 [trailer "coop"]
   key = "Co-authored-by: "
   ifmissing = add
-
 [init]
-	defaultBranch = master
+  defaultBranch = master

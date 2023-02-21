@@ -73,7 +73,16 @@ else
   keybase pgp export --secret | gpg --allow-secret-key --import
 fi
 
-## Set up ruby
+fish << 'END_FISH'
+  source $HOME/.config/fish/config.fish
+  curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
+  rbenv/fish-rbenv
+  cafedomancer/fish-nodenv
+  jethrokuan/z
+  jorgebucaran/hydro
+END_FISH
+
+## Set up Ruby
 RUBY_VERSION="3.2.1"
 if [ -d ".rbenv/versions/$RUBY_VERSION" ]; then
   echo "Ruby $RUBY_VERSION already installed"
@@ -83,5 +92,15 @@ fi
 eval "$(rbenv init -)"
 rbenv global "$RUBY_VERSION"
 
-fish -c "source $HOME/.config/fish/config.fish"
+## Set up Node
+NODE_VERSION="18.12.0"
+if [ -d ".nodenv/versions/$NODE_VERSION" ]; then
+  echo "Node $NODE_VERSION already installed"
+else
+  nodenv install $RUBY_VERSION
+fi
+eval "$(nodenv init -)"
+nodenv global "$RUBY_VERSION"
+
+npm install prettier @prettier/plugin-ruby --location=global
 

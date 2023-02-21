@@ -1,5 +1,5 @@
 [core]
-  excludesfile = ~/.gitignore_global
+  excludesFile = ~/.gitignore
   editor = nvim
   quotepath = false
   pager = /usr/local/var/homebrew/linked/git/share/git-core/contrib/diff-highlight/diff-highlight | less
@@ -46,5 +46,8 @@
   gpgsign = true
   verbose = true
 [trailer "coop"]
-	key = "Co-authored-by: "
-	ifmissing = add
+  key = "Co-authored-by: "
+  ifmissing = add
+
+[init]
+	defaultBranch = master

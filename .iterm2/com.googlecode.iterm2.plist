@@ -3568,7 +3568,7 @@
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>MesloLGS-NF-Regular 14</string>
+			<string>JetBrainsMono-Regular 14</string>
 			<key>Open Toolbelt</key>
 			<false/>
 			<key>Option Key Sends</key>
@@ -3727,6 +3727,8 @@
 	<false/>
 	<key>OpenTmuxWindowsIn</key>
 	<integer>1</integer>
+	<key>PMPrintingExpandedStateForPrint2</key>
+	<false/>
 	<key>PasteSpecialChunkDelay</key>
 	<real>0.01</real>
 	<key>PasteSpecialChunkSize</key>
@@ -3770,6 +3772,8 @@
 			<string>kNextWindowPointerAction</string>
 		</dict>
 	</dict>
+	<key>Print In Black And White</key>
+	<true/>
 	<key>SavePasteHistory</key>
 	<true/>
 	<key>SeparateStatusBarsPerPane</key>

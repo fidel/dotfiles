@@ -49,7 +49,7 @@ else
 fi
 
 # Install all fzf goodies
-/usr/homebrew/opt/fzf/install
+/opt/homebrew/opt/fzf/install --all
 
 # Switch to fish shell
 fish <<'END_FISH'

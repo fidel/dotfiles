@@ -24,7 +24,7 @@ return {
         },
         sections = {
           lualine_x = {
-           "aerial",
+            "aerial",
           },
           lualine_b = {
             "branch",
@@ -44,6 +44,7 @@ return {
           "oil",
           "lazy",
         },
+        theme = "rose-pine",
       })
     end,
   },

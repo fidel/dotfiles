@@ -100,7 +100,7 @@ gem update --system
 gem update bundler
 
 ## Set up Node
-NODE_VERSION="18.12.0"
+NODE_VERSION="20.10.0"
 if [ -d ".nodenv/versions/$NODE_VERSION" ]; then
   echo "Node $NODE_VERSION already installed"
 else

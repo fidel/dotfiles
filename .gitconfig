@@ -3,11 +3,13 @@
   editor = nvim
   quotepath = false
   pager = /opt/homebrew/var/homebrew/linked/git/share/git-core/contrib/diff-highlight/diff-highlight | less
+	attributesfile = /Users/fidel/.gitattributes
 [alias]
   aa = add .
   st = status
   ci = commit -v
   co = checkout
+  cp = cherry-pick
   br = branch
   ds = diff --staged
   d  = diff

@@ -82,24 +82,21 @@ fish << 'END_FISH'
   source $HOME/.config/fish/config.fish
   fish_add_path -U /opt/homebrew/bin
   curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
-  fisher install rbenv/fish-rbenv
   fisher install cafedomancer/fish-nodenv
   fisher install jethrokuan/z
   fisher install jorgebucaran/hydro
 END_FISH
 
 ## Set up Ruby
-RUBY_VERSION="3.2.1"
-if [ -d ".rbenv/versions/$RUBY_VERSION" ]; then
+RUBY_VERSION="3.2.2"
+if [ -d ".rubies/versions/$RUBY_VERSION" ]; then
   echo "Ruby $RUBY_VERSION already installed"
 else
-  ruby-install --install-dir "$HOME/.rbenv/versions/$RUBY_VERSION" ruby "$RUBY_VERSION" -- --with-jemalloc --with-yjit
+  ruby-install ruby "$RUBY_VERSION" -- --with-jemalloc --with-yjit
 fi
 eval "$(rbenv init -)"
-rbenv global "$RUBY_VERSION"
 gem update --system
 gem update bundler
-gem install prettier
 
 ## Set up Node
 NODE_VERSION="18.12.0"
@@ -110,6 +107,4 @@ else
 fi
 eval "$(nodenv init -)"
 nodenv global "$NODE_VERSION"
-
-npm install prettier @prettier/plugin-ruby --location=global
 

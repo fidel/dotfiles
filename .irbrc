@@ -1,6 +1,7 @@
-require 'irb/ext/save-history'
+require 'irb'
+require 'rubygems'
 
-IRB.conf[:SAVE_HISTORY] = 200
+IRB.conf[:SAVE_HISTORY] = 1000
 IRB.conf[:HISTORY_FILE] = "#{ENV['HOME']}/.irb-history"
 IRB.conf[:EVAL_HISTORY] = 10
 

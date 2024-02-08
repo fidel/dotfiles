@@ -45,8 +45,14 @@
 [commit]
   gpgsign = true
   verbose = true
+	template = /Users/fidel/.gitmessage
 [trailer "coop"]
   key = "Co-authored-by: "
   ifmissing = add
 [init]
   defaultBranch = master
+[diff "rspec"]
+  xfuncname = "^[ \t]*((RSpec|describe|context|it|before|after|around|feature|scenario)[ \t].*)$"
+[merge "merge-structure-sql"]
+	name = Rails structure.sql merge driver
+	driver = git-merge-structure-sql %A %O %B

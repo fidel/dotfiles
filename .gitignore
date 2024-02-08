@@ -10,6 +10,7 @@ webpack/build
 .vscode/
 .irb_history
 .ruby-version
+.node-version
 .vim/backup/*
 .vim/bundle/*
 .vim/autoload/*

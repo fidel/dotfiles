@@ -88,13 +88,14 @@ fish << 'END_FISH'
 END_FISH
 
 ## Set up Ruby
-RUBY_VERSION="3.2.2"
+RUBY_VERSION="3.3.0"
 if [ -d ".rubies/versions/$RUBY_VERSION" ]; then
   echo "Ruby $RUBY_VERSION already installed"
 else
-  ruby-install ruby "$RUBY_VERSION" -- --with-jemalloc --with-yjit
+  ruby-install "$RUBY_VERSION" -- --with-jemalloc --with-yjit
 fi
-eval "$(rbenv init -)"
+
+chruby "$RUBY_VERSION"
 gem update --system
 gem update bundler
 

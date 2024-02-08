@@ -22,3 +22,8 @@ webpack/build
 .config/fish/fish_variables
 .config/gh/
 .config/stripe/
+.config/jgit
+.config/github-copilot/
+.config/zed/
+.zed
+.config/op/

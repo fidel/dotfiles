@@ -1,4 +1,5 @@
 function git
-  env LC_ALL=en_US.UTF-8 git $argv
+    env LC_ALL=en_US.UTF-8 git $argv
 end
 
+abbr g git

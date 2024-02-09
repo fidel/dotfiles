@@ -18,7 +18,6 @@ webpack/build
 .netrwhist
 .config/yarn/*
 .config/configstore/*
-.config/fish/functions/*
 .config/fish/fish_variables
 .config/gh/
 .config/stripe/
@@ -27,3 +26,14 @@ webpack/build
 .config/zed/
 .zed
 .config/op/
+.config/fish/conf.d/z.fish
+.config/fish/functions/__z.fish
+.config/fish/functions/__z_add.fish
+.config/fish/functions/__z_clean.fish
+.config/fish/functions/__z_complete.fish
+.config/fish/functions/fish_mode_prompt.fish
+.config/fish/functions/fish_prompt.fish
+.config/fish/functions/fish_user_key_bindings.fish
+.config/fish/functions/fisher.fish
+.config/fish/functions/fzf_key_bindings.fish
+.config/fish/functions/nodenv.fish

@@ -27,6 +27,7 @@ webpack/build
 .zed
 .config/op/
 .config/fish/conf.d/z.fish
+.config/fish/conf.d/hydro.fish
 .config/fish/functions/__z.fish
 .config/fish/functions/__z_add.fish
 .config/fish/functions/__z_clean.fish

@@ -33,7 +33,6 @@ webpack/build
 .config/fish/functions/__z_clean.fish
 .config/fish/functions/__z_complete.fish
 .config/fish/functions/fish_mode_prompt.fish
-.config/fish/functions/fish_prompt.fish
 .config/fish/functions/fish_user_key_bindings.fish
 .config/fish/functions/fisher.fish
 .config/fish/functions/fzf_key_bindings.fish

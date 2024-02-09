@@ -51,6 +51,13 @@ vim.keymap.set(
   { desc = "Edit fish.config" }
 )
 
+vim.keymap.set(
+  { "n", "v" },
+  "<Leader>y",
+  "\"*y",
+  { desc = "Copy to system clipboard" }
+)
+
 vim.api.nvim_create_autocmd("WinEnter", {
   pattern = "*",
   callback = function()
@@ -78,4 +85,3 @@ vim.api.nvim_create_autocmd("InsertLeave", {
     vim.o.paste = false
   end,
 })
-

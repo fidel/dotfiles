@@ -11,15 +11,16 @@
   co = checkout
   cp = cherry-pick
   br = branch
-  ds = diff --staged
-  d  = diff
-  ri = rebase -i
-  rc = rebase --continue
-  rs = rebase --skip
+  ds = diff --staged -w --patience --word-diff=color
+  d  = diff -w --patience --word-diff=color
   ra = rebase --abort
+  ri = rebase --interactive
+  rc = rebase --continue
   ap = add -p
   sp = stash --patch
-  vomit = commit
+  rs = reset --soft HEAD~1
+  lg = log -p
+  ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Cblue%ci\\ %Creset%s%Cblue\\ [%cn]" --decorate
 [user]
   name = Szymon Fiedler
   email = szymon.fiedler@gmail.com

@@ -47,7 +47,6 @@ brew "libyaml"
 brew "stripe"
 brew "redis"
 brew "openssl"
-brew "elm"
 brew "ripgrep"
 brew "nvim"
 brew "tree-sitter"
@@ -104,6 +103,8 @@ cask "orbstack"
 cask "rubymine"
 cask "zoom"
 cask "send-to-kindle"
+cask "telegram"
+cask "warp"
 
 mas "1 Password for Safari", id: 1_569_813_296
 mas "Magnet", id: 441_258_766

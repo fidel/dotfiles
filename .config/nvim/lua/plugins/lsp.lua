@@ -151,7 +151,7 @@ return {
         })
       end
 
-      lspconfig.ruby_ls.setup({
+      lspconfig.ruby_lsp.setup({
         capabilities = capabilities,
         on_attach = function(client, buffer_nr)
           setup_diagnostics(client, buffer_nr)

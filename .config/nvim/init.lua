@@ -35,7 +35,6 @@ vim.o.ignorecase = true
 vim.o.wrap = false
 vim.wo.number = true
 vim.wo.signcolumn = "yes"
-vim.cmd("colorscheme rose-pine-dawn")
 
 vim.keymap.set(
   "n",

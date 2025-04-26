@@ -16,6 +16,7 @@ return {
         -- },
         virtual_text = false,
         update_in_insert = true,
+        virtual_lines = true,
       })
 
       vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
@@ -100,7 +101,7 @@ return {
 
       -- Ruby
       -- https://github.com/Shopify/ruby-lsp/blob/main/EDITORS.md#Neovim-LSP
-      _timers = {}
+      local _timers = {}
       local function setup_diagnostics(client, buffer) -- textDocument/diagnostic support until 0.10.0 is released
         if require("vim.lsp.diagnostic")._enable then
           return
@@ -114,7 +115,7 @@ return {
             function(err, result)
               if err then
                 local err_msg =
-                  string.format("diagnostics error - %s", vim.inspect(err))
+                    string.format("diagnostics error - %s", vim.inspect(err))
                 vim.lsp.log.error(err_msg)
               end
               local diagnostic_items = {}

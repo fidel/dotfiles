@@ -43,8 +43,11 @@ return {
       telescope.load_extension("fzf")
       telescope.load_extension("ui-select")
 
-      vim.keymap.set("n", "<leader>p", function()
+      vim.keymap.set("n", "<leader>pf", function()
         require("telescope.builtin").find_files({ previewer = false })
+      end, { desc = "Find files" })
+      vim.keymap.set("n", "<leader>p", function()
+        require("telescope.builtin").git_files({ previewer = false })
       end, { desc = "Find files" })
       vim.keymap.set("n", "<leader>e", function()
         require("telescope.builtin").oldfiles()

@@ -34,7 +34,7 @@ brew "gnu-sed"
 brew "httpie"
 brew "tmux"
 brew "sqlite"
-brew "postgresql@15"
+brew "postgresql@14"
 brew "postgis"
 brew "mysql@8.0"
 brew "mas"
@@ -105,13 +105,15 @@ cask "zoom"
 cask "send-to-kindle"
 cask "telegram"
 cask "warp"
+cask "claude"
+cask "ghostty"
 
 mas "1 Password for Safari", id: 1_569_813_296
 mas "Magnet", id: 441_258_766
 mas "AdGuard for Safari", id: 1_440_147_259
 mas "Noko", id: 879_917_538
 mas "Gestimer", id: 990_588_172
-mas "WhatsApp", id: 1_147_396_723
+mas "WhatsApp", id: 310_633_997
 mas "Pixelmator", id: 407_963_104
 mas "Pixelmator Pro", id: 1_289_583_905
 mas "The Unarchiver", id: 425_424_353

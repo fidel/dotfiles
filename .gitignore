@@ -37,3 +37,4 @@ webpack/build
 .config/fish/functions/fisher.fish
 .config/fish/functions/fzf_key_bindings.fish
 .config/fish/functions/nodenv.fish
+.streerc

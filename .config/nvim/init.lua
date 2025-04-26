@@ -34,6 +34,7 @@ vim.o.updatetime = 250
 vim.o.ignorecase = true
 vim.o.wrap = false
 vim.wo.number = true
+vim.o.relativenumber = true
 vim.wo.signcolumn = "yes"
 
 vim.keymap.set(

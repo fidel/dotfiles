@@ -26,9 +26,9 @@ return {
         end
         local line, col = unpack(vim.api.nvim_win_get_cursor(0))
         return col ~= 0
-          and vim.api
-              .nvim_buf_get_text(0, line - 1, 0, line - 1, col, {})[1]
-              :match("^%s*$")
+            and vim.api
+            .nvim_buf_get_text(0, line - 1, 0, line - 1, col, {})[1]
+            :match("^%s*$")
             == nil
       end
 
@@ -69,15 +69,14 @@ return {
         sources = cmp.config.sources({
           -- { name = "copilot" },
           { name = "nvim_lsp" },
-        }, {
           { name = "buffer" },
+          { name = "path" },
         }),
       })
 
       cmp.setup.filetype("gitcommit", {
         sources = cmp.config.sources({
           { name = "vsnip" },
-        }, {
           { name = "buffer" },
         }),
       })

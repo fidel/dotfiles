@@ -84,6 +84,26 @@ return {
 
       local lspconfig = require("lspconfig")
 
+      local function ensure_ruby_lsp()
+        local ruby_lsp_cmd = "ruby-lsp"
+        local handle = io.popen("command -v " .. ruby_lsp_cmd .. " 2>/dev/null")
+        local result = handle:read("*a")
+        handle:close()
+
+        if result == "" then
+          print("ruby-lsp not found, installing...")
+          local install_cmd = "gem install ruby-lsp"
+          local install_result = os.execute(install_cmd)
+          if install_result == 0 then
+            print("ruby-lsp installed successfully")
+          else
+            print("Failed to install ruby-lsp. Please install it manually with 'gem install ruby-lsp'")
+            return false
+          end
+        end
+        return true
+      end
+
       -- Elm
       -- https://github.com/elm-tooling/elm-language-server#installation
       lspconfig.elmls.setup({
@@ -153,6 +173,7 @@ return {
       end
 
       lspconfig.ruby_lsp.setup({
+        cmd = { "ruby-lsp" },
         capabilities = capabilities,
         on_attach = function(client, buffer_nr)
           setup_diagnostics(client, buffer_nr)

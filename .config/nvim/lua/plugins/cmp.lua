@@ -67,7 +67,7 @@ return {
           end),
         }),
         sources = cmp.config.sources({
-          { name = "copilot" },
+          -- { name = "copilot" },
           { name = "nvim_lsp" },
         }, {
           { name = "buffer" },

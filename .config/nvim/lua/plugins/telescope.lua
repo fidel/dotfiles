@@ -58,6 +58,39 @@ return {
       vim.keymap.set("n", "<leader>fb", function()
         require("telescope.builtin").buffers({ sort_lastused = true })
       end, { desc = "Buffers" })
+
+      function vim.getVisualSelection()
+        local current_clipboard_content = vim.fn.getreg('"')
+
+        vim.cmd('noau normal! "vy"')
+        local text = vim.fn.getreg('v')
+        vim.fn.setreg('v', {})
+
+        vim.fn.setreg('"', current_clipboard_content)
+
+        text = string.gsub(text, "\n", "")
+        if #text > 0 then
+          return text
+        else
+          return ''
+        end
+      end
+
+      local keymap = vim.keymap.set
+      local tb = require('telescope.builtin')
+      local opts = { noremap = true, silent = true }
+
+      keymap('n', '<leader>g', ':Telescope current_buffer_fuzzy_find<cr>', opts)
+      keymap('v', '<leader>g', function()
+        local text = vim.getVisualSelection()
+        tb.current_buffer_fuzzy_find({ default_text = text })
+      end, opts)
+
+      keymap('n', '<leader>G', ':Telescope live_grep<cr>', opts)
+      keymap('v', '<leader>G', function()
+        local text = vim.getVisualSelection()
+        tb.grep_string({ search = text })
+      end, opts)
     end,
   },
 }

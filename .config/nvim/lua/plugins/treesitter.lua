@@ -48,4 +48,5 @@ return {
       vim.cmd([[set nofoldenable]])
     end,
   },
+  { "nvim-treesitter/nvim-treesitter-context", },
 }

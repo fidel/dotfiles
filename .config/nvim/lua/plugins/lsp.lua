@@ -82,8 +82,6 @@ return {
         vim.lsp.protocol.make_client_capabilities()
       )
 
-      local lspconfig = require("lspconfig")
-
       local function ensure_ruby_lsp()
         local ruby_lsp_cmd = "ruby-lsp"
         local handle = io.popen("command -v " .. ruby_lsp_cmd .. " 2>/dev/null")
@@ -106,7 +104,7 @@ return {
 
       -- Elm
       -- https://github.com/elm-tooling/elm-language-server#installation
-      lspconfig.elmls.setup({
+      vim.lsp.config.elmls = {
         cmd = {
           "npx",
           "elm-language-server",
@@ -117,7 +115,8 @@ return {
           client.server_capabilities.documentFormattingProvider = false
           client.server_capabilities.documentRangeFormattingProvider = false
         end,
-      })
+      }
+      vim.lsp.enable('elmls')
 
       -- Ruby
       -- https://github.com/Shopify/ruby-lsp/blob/main/EDITORS.md#Neovim-LSP
@@ -172,19 +171,20 @@ return {
         })
       end
 
-      lspconfig.ruby_lsp.setup({
+      vim.lsp.config.ruby_lsp = {
         cmd = { "ruby-lsp" },
         capabilities = capabilities,
         on_attach = function(client, buffer_nr)
           setup_diagnostics(client, buffer_nr)
         end,
-      })
+      }
+      vim.lsp.enable('ruby_lsp')
 
       -- Lua
       -- https://luals.github.io/#install
       require("neodev").setup()
 
-      lspconfig.lua_ls.setup({
+      vim.lsp.config.lua_ls = {
         capabilities = capabilities,
         settings = {
           Lua = {
@@ -193,7 +193,10 @@ return {
             },
           },
         },
-      })
+      }
+      vim.lsp.enable('lua_ls')
+
+      vim.lsp.enable('herb_ls')
     end,
   },
 }

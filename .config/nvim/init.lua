@@ -1,5 +1,5 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
+if not vim.uv.fs_stat(lazypath) then
   vim.fn.system({
     "git",
     "clone",
@@ -58,7 +58,12 @@ vim.keymap.set(
   { desc = "Copy to system clipboard" }
 )
 
+-- Create augroup for better organization
+local augroup = vim.api.nvim_create_augroup("UserConfig", { clear = true })
+
+-- Highlight cursorline only in active window
 vim.api.nvim_create_autocmd("WinEnter", {
+  group = augroup,
   pattern = "*",
   callback = function()
     vim.o.cursorline = true
@@ -66,20 +71,25 @@ vim.api.nvim_create_autocmd("WinEnter", {
 })
 
 vim.api.nvim_create_autocmd("WinLeave", {
+  group = augroup,
   pattern = "*",
   callback = function()
     vim.o.cursorline = false
   end,
 })
 
+-- Highlight yanked text briefly
 vim.api.nvim_create_autocmd("TextYankPost", {
+  group = augroup,
   pattern = "*",
   callback = function()
     vim.highlight.on_yank({ timeout = 150 })
   end,
 })
 
+-- Disable paste mode when leaving insert mode
 vim.api.nvim_create_autocmd("InsertLeave", {
+  group = augroup,
   pattern = "*",
   callback = function()
     vim.o.paste = false

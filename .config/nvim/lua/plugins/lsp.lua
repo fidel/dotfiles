@@ -82,26 +82,6 @@ return {
         vim.lsp.protocol.make_client_capabilities()
       )
 
-      local function ensure_ruby_lsp()
-        local ruby_lsp_cmd = "ruby-lsp"
-        local handle = io.popen("command -v " .. ruby_lsp_cmd .. " 2>/dev/null")
-        local result = handle:read("*a")
-        handle:close()
-
-        if result == "" then
-          print("ruby-lsp not found, installing...")
-          local install_cmd = "gem install ruby-lsp"
-          local install_result = os.execute(install_cmd)
-          if install_result == 0 then
-            print("ruby-lsp installed successfully")
-          else
-            print("Failed to install ruby-lsp. Please install it manually with 'gem install ruby-lsp'")
-            return false
-          end
-        end
-        return true
-      end
-
       -- Elm
       -- https://github.com/elm-tooling/elm-language-server#installation
       vim.lsp.config.elmls = {
@@ -120,63 +100,9 @@ return {
 
       -- Ruby
       -- https://github.com/Shopify/ruby-lsp/blob/main/EDITORS.md#Neovim-LSP
-      local _timers = {}
-      local function setup_diagnostics(client, buffer) -- textDocument/diagnostic support until 0.10.0 is released
-        if require("vim.lsp.diagnostic")._enable then
-          return
-        end
-
-        local diagnostic_handler = function()
-          local params = vim.lsp.util.make_text_document_params(buffer)
-          client.request(
-            "textDocument/diagnostic",
-            { textDocument = params },
-            function(err, result)
-              if err then
-                local err_msg =
-                    string.format("diagnostics error - %s", vim.inspect(err))
-                vim.lsp.log.error(err_msg)
-              end
-              local diagnostic_items = {}
-              if result then
-                diagnostic_items = result.items
-              end
-              vim.lsp.diagnostic.on_publish_diagnostics(
-                nil,
-                vim.tbl_extend(
-                  "keep",
-                  params,
-                  { diagnostics = diagnostic_items }
-                ),
-                { client_id = client.id }
-              )
-            end
-          )
-        end
-
-        diagnostic_handler() -- to request diagnostics on buffer when first attaching
-
-        vim.api.nvim_buf_attach(buffer, false, {
-          on_lines = function()
-            if _timers[buffer] then
-              vim.fn.timer_stop(_timers[buffer])
-            end
-            _timers[buffer] = vim.fn.timer_start(200, diagnostic_handler)
-          end,
-          on_detach = function()
-            if _timers[buffer] then
-              vim.fn.timer_stop(_timers[buffer])
-            end
-          end,
-        })
-      end
-
       vim.lsp.config.ruby_lsp = {
         cmd = { "ruby-lsp" },
         capabilities = capabilities,
-        on_attach = function(client, buffer_nr)
-          setup_diagnostics(client, buffer_nr)
-        end,
       }
       vim.lsp.enable('ruby_lsp')
 

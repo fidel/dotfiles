@@ -1,1 +1,1 @@
-chruby 3.4.2
+chruby 3.4.7

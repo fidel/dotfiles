@@ -20,6 +20,7 @@ return {
         ensure_installed = {
           "css",
           "diff",
+          "dockerfile",
           "elm",
           "fish",
           "git_config",

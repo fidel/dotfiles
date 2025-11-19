@@ -28,6 +28,7 @@ brew "postgresql"
 brew "mas"
 brew "yt-dlp"
 brew "imagemagick"
+brew "libxml2"
 brew "libvips"
 brew "libheif"
 brew "libavif"
@@ -88,6 +89,8 @@ cask "calibre"
 cask "blackhole-2ch"
 cask "logseq"
 cask "spline"
+cask "ngrok"
+cask "1password-cli"
 
 mas "1 Password for Safari", id: 1_569_813_296
 mas "Magnet", id: 441_258_766

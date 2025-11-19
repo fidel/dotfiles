@@ -21,6 +21,8 @@
   rs = reset --soft HEAD~1
   lg = log -p
   ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Cblue%ci\\ %Creset%s%Cblue\\ [%cn]" --decorate
+  coauthors = "!f() { git log --all --format='%aN <%aE>' | sort -u; }; f"
+  ca = "!f() { echo \"\\n\\nCo-authored-by: $1\" >> \"$(git rev-parse --git-dir)/COMMIT_EDITMSG\" || echo \"Co-authored-by: $1\"; }; f"
 [user]
   name = Szymon Fiedler
   email = szymon.fiedler@gmail.com
@@ -48,7 +50,7 @@
 [commit]
   gpgsign = true
   verbose = true
-	template = /Users/fidel/.gitmessage
+	; template = /Users/fidel/.gitmessage
 [trailer "coop"]
   key = "Co-authored-by: "
   ifmissing = add
